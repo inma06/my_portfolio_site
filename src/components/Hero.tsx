@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import { FiCheck, FiCopy, FiGithub, FiMail } from "react-icons/fi";
 import { profile } from "../data/portfolio";
 import { useTypewriter } from "../hooks/useTypewriter";
+import { ScrollIndicator } from "./ScrollIndicator";
 
 export function Hero() {
   const fullText = `안녕하세요,\n${profile.name} 입니다.`;
@@ -39,7 +40,7 @@ export function Hero() {
   return (
     <section
       id="hero"
-      className="relative isolate mx-auto flex min-h-[88vh] w-full max-w-5xl flex-col justify-center px-6 sm:px-8"
+      className="relative isolate mx-auto flex min-h-[calc(100dvh-3.5rem)] w-full max-w-5xl flex-col justify-center px-6 sm:px-8"
     >
       <div
         aria-hidden
@@ -103,6 +104,8 @@ export function Hero() {
           </button>
         </div>
       </div>
+
+      <ScrollIndicator />
     </section>
   );
 }
