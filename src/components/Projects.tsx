@@ -1,11 +1,30 @@
 import { useState } from "react";
-import { FaAppStoreIos, FaGooglePlay, FaGithub } from "react-icons/fa";
-import { FiExternalLink, FiArrowRight } from "react-icons/fi";
+import {
+  FaAppStoreIos,
+  FaGooglePlay,
+  FaGithub,
+  FaApple,
+  FaAndroid,
+} from "react-icons/fa";
+import {
+  FiExternalLink,
+  FiArrowRight,
+  FiServer,
+  FiGlobe,
+  FiSmartphone,
+} from "react-icons/fi";
+import { SiFlutter } from "react-icons/si";
 import type { IconType } from "react-icons";
 import { Section } from "./Section";
 import { ProjectDetailModal } from "./ProjectDetailModal";
 import { projects } from "../data/portfolio";
-import type { Project, ProjectLink, ProjectLinkKind } from "../data/portfolio";
+import type {
+  Badge as BadgeData,
+  BadgeKind,
+  Project,
+  ProjectLink,
+  ProjectLinkKind,
+} from "../data/portfolio";
 
 const LINK_META: Record<
   ProjectLinkKind,
@@ -16,6 +35,68 @@ const LINK_META: Record<
   github: { label: "GitHub", Icon: FaGithub },
   website: { label: "Website", Icon: FiExternalLink },
 };
+
+const BADGE_META: Record<
+  BadgeKind,
+  { label: string; fallback?: string; Icon: IconType; cls: string }
+> = {
+  backend: {
+    label: "Back-End",
+    Icon: FiServer,
+    cls: "border-emerald-500/30 bg-emerald-500/10 text-emerald-300",
+  },
+  web: {
+    label: "Front-End",
+    fallback: "Web",
+    Icon: FiGlobe,
+    cls: "border-sky-500/30 bg-sky-500/10 text-sky-300",
+  },
+  app: {
+    label: "Front-End",
+    fallback: "App",
+    Icon: FiSmartphone,
+    cls: "border-violet-500/30 bg-violet-500/10 text-violet-300",
+  },
+  ios: {
+    label: "iOS",
+    Icon: FaApple,
+    cls: "border-zinc-500/30 bg-zinc-500/10 text-zinc-200",
+  },
+  aos: {
+    label: "AOS",
+    Icon: FaAndroid,
+    cls: "border-lime-500/30 bg-lime-500/10 text-lime-300",
+  },
+  flutter: {
+    label: "Flutter",
+    Icon: SiFlutter,
+    cls: "border-cyan-500/30 bg-cyan-500/10 text-cyan-300",
+  },
+};
+
+const KINDS_WITH_FRAMEWORK: ReadonlySet<BadgeKind> = new Set<BadgeKind>([
+  "backend",
+  "web",
+  "app",
+]);
+
+function Badge({ badge }: { badge: BadgeData }) {
+  const meta = BADGE_META[badge.kind];
+  const Icon = meta.Icon;
+  const suffix = KINDS_WITH_FRAMEWORK.has(badge.kind)
+    ? badge.framework ?? meta.fallback
+    : undefined;
+  const label = suffix ? `${meta.label} (${suffix})` : meta.label;
+
+  return (
+    <span
+      className={`inline-flex items-center gap-1 rounded-full border px-2 py-0.5 text-[10px] font-medium ${meta.cls}`}
+    >
+      <Icon className="h-3 w-3" />
+      {label}
+    </span>
+  );
+}
 
 function LinkButton({ link }: { link: ProjectLink }) {
   const meta = LINK_META[link.kind];
@@ -85,6 +166,15 @@ export function Projects() {
                   <p className="mb-3 text-xs text-[var(--color-accent)]">
                     {project.role}
                   </p>
+                )}
+                {project.badges && project.badges.length > 0 && (
+                  <ul className="mb-4 flex flex-wrap gap-1.5">
+                    {project.badges.map((b) => (
+                      <li key={b.kind}>
+                        <Badge badge={b} />
+                      </li>
+                    ))}
+                  </ul>
                 )}
                 <p className="text-sm leading-relaxed text-[var(--color-muted)]">
                   {project.description}

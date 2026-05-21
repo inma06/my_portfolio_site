@@ -29,6 +29,19 @@ export interface ProjectLink {
   label?: string;
 }
 
+export type BadgeKind =
+  | "backend"
+  | "web"
+  | "app"
+  | "ios"
+  | "aos"
+  | "flutter";
+
+export interface Badge {
+  kind: BadgeKind;
+  framework?: string;
+}
+
 export interface Project {
   name: string;
   period?: string;
@@ -36,6 +49,7 @@ export interface Project {
   description: string;
   highlights?: string[];
   tech: string[];
+  badges?: Badge[];
   links: ProjectLink[];
   brief?: string;
   detail?: string;
@@ -124,6 +138,14 @@ export const projects: Project[] = [
     role: "풀스택 단독 (Backend · Mobile · Web · Infra · Data)",
     description:
       "AI 캐릭터와 롤플레이 대화를 나누는 iOS · Android · Web 3-플랫폼 서비스. NestJS 백엔드 · Flutter 앱 · React 웹 · AWS 인프라 · 데이터 파이프라인까지 단독 개발·운영 중.",
+    badges: [
+      { kind: "backend", framework: "NestJS" },
+      { kind: "web", framework: "React" },
+      { kind: "app", framework: "Flutter" },
+      { kind: "ios" },
+      { kind: "aos" },
+      { kind: "flutter" },
+    ],
     highlights: [
       "AI 비용 약 7배 절감 (실측 35원 → 5원대/턴), grok-nothink-apr11 프리셋 운영",
       "채팅 응답 시간 10배+ 단축 (40초대 → 3~4초대), SSE + BullMQ 비동기 분리",
@@ -157,11 +179,15 @@ export const projects: Project[] = [
     detail: aiChatDetail,
   },
   {
-    name: "사주사이트",
+    name: "사주 서비스",
     period: "2026.02 — 2026.05 (3.5개월)",
     role: "백엔드 · 풀스택 단독",
     description:
       "Node.js · Express 기반 사주 리포트 결제·발급 서비스. 토스페이먼츠 v2 전환, GPT 리포트 파이프라인, 관리자 백오피스, 사주 계산 엔진까지 단독 개발 (약 170 커밋).",
+    badges: [
+      { kind: "backend", framework: "Express / NestJS" },
+      { kind: "web", framework: "EJS" },
+    ],
     highlights: [
       "토스페이먼츠 v1 → v2 전환 + 멱등성 기반 중복 결제·미발급 가드",
       "신년사주 · 재회사주 신규 상품 풀스택 출시 (랜딩 → 미리보기 → 결제 → 리포트)",
@@ -181,16 +207,36 @@ export const projects: Project[] = [
       "Jest",
       "Playwright",
     ],
-    links: [],
+    links: [
+      { kind: "website", url: "https://saju-maeul.kr/saju", label: "사주마을" },
+      { kind: "website", url: "https://unsaeline.store/saju", label: "지금운세" },
+      {
+        kind: "website",
+        url: "https://myunguncheop.store/saju",
+        label: "운세라운지",
+      },
+      { kind: "website", url: "https://www.sajulog.store/saju", label: "사주로그" },
+      {
+        kind: "website",
+        url: "https://unse-jeojangso.kr/saju",
+        label: "운세저장소",
+      },
+    ],
     brief: sajuBrief,
     detail: sajuDetail,
   },
   {
-    name: "라임프렌즈 (Just Thank You)",
+    name: "SNS 감사 일기",
     period: "2022.05 — 2023.01",
     role: "Flutter 앱 단독",
     description:
       "일상의 감사를 카드와 짧은 글로 표현하는 감성 SNS Flutter 앱. iOS · Android 동시 운영. CI/CD 정비, 백엔드 마이그레이션 대응, 스토어 심사 대응까지 전반을 책임짐.",
+    badges: [
+      { kind: "app", framework: "Flutter" },
+      { kind: "ios" },
+      { kind: "aos" },
+      { kind: "flutter" },
+    ],
     highlights: [
       "Flavor + Fastlane 기반 CI/CD 정비로 빌드 · QA 사이클 단축",
       "BLoC + DDD + Layered Architecture 로 장기 운영 가능한 구조 정착",
@@ -215,11 +261,17 @@ export const projects: Project[] = [
     detail: limeDetail,
   },
   {
-    name: "밀크코퍼레이션",
+    name: "유아동복 쇼핑몰",
     period: "2021.07 — 2022.04 (10개월)",
     role: "Flutter 앱 프론트엔드 단독",
     description:
       "유아동복 쇼핑몰 모바일 앱 프론트엔드 전반을 단독 담당. 초기 셋업부터 1.3.0 정식 출시까지 약 10개월간 iOS · Android 동시 운영.",
+    badges: [
+      { kind: "app", framework: "Flutter" },
+      { kind: "ios" },
+      { kind: "aos" },
+      { kind: "flutter" },
+    ],
     highlights: [
       "GetX 기반 상태관리 + 중복 라우팅 · 중복 push 방지 규칙 정착",
       "Firebase Auth · FCM · Crashlytics 통합으로 운영 안정화",
