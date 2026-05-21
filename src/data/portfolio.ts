@@ -2,6 +2,10 @@ import aiChatBrief from "../../docs/portfolio_brief.md?raw";
 import aiChatDetail from "../../docs/portfolio_detail.md?raw";
 import sajuBrief from "../../docs/사주_포트폴리오_간략버전.md?raw";
 import sajuDetail from "../../docs/사주_포트폴리오_디테일버전.md?raw";
+import limeBrief from "../../docs/라임프렌즈_포트폴리오_간략버전.md?raw";
+import limeDetail from "../../docs/라임프렌즈_포트폴리오_디테일버전.md?raw";
+import milkBrief from "../../docs/밀크코퍼레이션_포트폴리오_간략버전.md?raw";
+import milkDetail from "../../docs/밀크코퍼레이션_포트폴리오_디테일버전.md?raw";
 
 export type StackCategory = "Backend" | "Mobile" | "Infra" | "Tooling";
 
@@ -139,7 +143,16 @@ export const projects: Project[] = [
       "AWS EC2",
       "OpenRouter / Grok",
     ],
-    links: [],
+    links: [
+      {
+        kind: "appstore",
+        url: "https://apps.apple.com/kr/app/%EB%94%94%ED%8D%BC-deeper-ai-%EC%BA%90%EB%A6%AD%ED%84%B0%EC%99%80-%EB%8D%94-%EA%B9%8A%EC%9D%80-%EB%8C%80%ED%99%94/id6761097402",
+      },
+      {
+        kind: "playstore",
+        url: "https://play.google.com/store/apps/details?id=kr.lowtone.aichat&hl=ko",
+      },
+    ],
     brief: aiChatBrief,
     detail: aiChatDetail,
   },
@@ -171,5 +184,69 @@ export const projects: Project[] = [
     links: [],
     brief: sajuBrief,
     detail: sajuDetail,
+  },
+  {
+    name: "라임프렌즈 (Just Thank You)",
+    period: "2022.05 — 2023.01",
+    role: "Flutter 앱 단독",
+    description:
+      "일상의 감사를 카드와 짧은 글로 표현하는 감성 SNS Flutter 앱. iOS · Android 동시 운영. CI/CD 정비, 백엔드 마이그레이션 대응, 스토어 심사 대응까지 전반을 책임짐.",
+    highlights: [
+      "Flavor + Fastlane 기반 CI/CD 정비로 빌드 · QA 사이클 단축",
+      "BLoC + DDD + Layered Architecture 로 장기 운영 가능한 구조 정착",
+      "백엔드 Firestore → AWS Lambda + PostgreSQL 전환에 맞춰 클라이언트 데이터 레이어 재구성",
+      "Google UGC 정책 반려 대응 + 아임포트 선물하기 결제 흐름 구축",
+    ],
+    tech: [
+      "Flutter",
+      "Dart",
+      "BLoC",
+      "DDD",
+      "Layered Architecture",
+      "Firebase",
+      "AWS Lambda",
+      "PostgreSQL",
+      "Fastlane",
+      "Flavor",
+      "아임포트",
+    ],
+    links: [],
+    brief: limeBrief,
+    detail: limeDetail,
+  },
+  {
+    name: "밀크코퍼레이션",
+    period: "2021.07 — 2022.04 (10개월)",
+    role: "Flutter 앱 프론트엔드 단독",
+    description:
+      "유아동복 쇼핑몰 모바일 앱 프론트엔드 전반을 단독 담당. 초기 셋업부터 1.3.0 정식 출시까지 약 10개월간 iOS · Android 동시 운영.",
+    highlights: [
+      "GetX 기반 상태관리 + 중복 라우팅 · 중복 push 방지 규칙 정착",
+      "Firebase Auth · FCM · Crashlytics 통합으로 운영 안정화",
+      "아임포트 결제 + 에어브릿지(AB108) 어트리뷰션 SDK 연동",
+      "서버 설정만으로 즉시 켤 수 있는 권장 / 강제 업데이트 게이트 도입",
+    ],
+    tech: [
+      "Flutter",
+      "Dart",
+      "GetX",
+      "Firebase",
+      "FCM",
+      "Crashlytics",
+      "아임포트",
+      "에어브릿지",
+    ],
+    links: [
+      {
+        kind: "appstore",
+        url: "https://apps.apple.com/kr/app/%ED%82%A4%EC%A6%88%EB%8B%9D/id1599682755",
+      },
+      {
+        kind: "playstore",
+        url: "https://play.google.com/store/apps/details?id=kr.milkcorp.kidsning&hl=ko",
+      },
+    ],
+    brief: milkBrief,
+    detail: milkDetail,
   },
 ];
