@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { FaApple, FaGooglePlay, FaGithub } from "react-icons/fa";
+import { FaAppStoreIos, FaGooglePlay, FaGithub } from "react-icons/fa";
 import { FiExternalLink, FiArrowRight } from "react-icons/fi";
 import type { IconType } from "react-icons";
 import { Section } from "./Section";
@@ -11,7 +11,7 @@ const LINK_META: Record<
   ProjectLinkKind,
   { label: string; Icon: IconType }
 > = {
-  appstore: { label: "App Store", Icon: FaApple },
+  appstore: { label: "App Store", Icon: FaAppStoreIos },
   playstore: { label: "Play Store", Icon: FaGooglePlay },
   github: { label: "GitHub", Icon: FaGithub },
   website: { label: "Website", Icon: FiExternalLink },
