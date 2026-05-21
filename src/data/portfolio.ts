@@ -1,3 +1,8 @@
+import aiChatBrief from "../../docs/portfolio_brief.md?raw";
+import aiChatDetail from "../../docs/portfolio_detail.md?raw";
+import sajuBrief from "../../docs/사주_포트폴리오_간략버전.md?raw";
+import sajuDetail from "../../docs/사주_포트폴리오_디테일버전.md?raw";
+
 export type StackCategory = "Backend" | "Mobile" | "Infra" | "Tooling";
 
 export interface TechItem {
@@ -28,6 +33,8 @@ export interface Project {
   highlights?: string[];
   tech: string[];
   links: ProjectLink[];
+  brief?: string;
+  detail?: string;
 }
 
 export interface Profile {
@@ -43,8 +50,8 @@ export const profile: Profile = {
   title: "Backend & Mobile Engineer",
   tagline:
     "NestJS · Node.js 백엔드와 Flutter 앱을 함께 만드는 풀스택 개발자입니다.",
-  email: "shared@lowtone.kr",
-  github: "https://github.com/your-handle",
+  email: "leo0832010@gmail.com",
+  github: "https://github.com/inma06",
 };
 
 export const stacks: StackGroup[] = [
@@ -55,92 +62,114 @@ export const stacks: StackGroup[] = [
     items: [
       { name: "NestJS" },
       { name: "Node.js" },
+      { name: "Express" },
       { name: "TypeScript" },
       { name: "PostgreSQL" },
+      { name: "MySQL" },
       { name: "Redis" },
-      { name: "Prisma / TypeORM" },
+      { name: "TypeORM / Sequelize" },
+      { name: "BullMQ" },
     ],
   },
   {
     category: "Mobile",
-    label: "Mobile",
-    description: "Flutter 단일 코드베이스로 iOS / Android 앱 출시",
+    label: "Mobile & Web",
+    description: "Flutter 앱과 React 웹을 단일 코드베이스로 출시·운영",
     items: [
       { name: "Flutter" },
       { name: "Dart" },
       { name: "Riverpod" },
-      { name: "Firebase" },
-      { name: "Fastlane" },
+      { name: "React 19" },
+      { name: "Vite" },
+      { name: "Zustand" },
+      { name: "Tailwind CSS" },
     ],
   },
   {
     category: "Infra",
     label: "Infra & Cloud",
-    description: "AWS 기반 배포 및 운영, 컨테이너 오케스트레이션",
+    description: "AWS 기반 배포와 운영, SSE / 결제 / 푸시 트래픽 처리",
     items: [
-      { name: "AWS (EC2 · ECS · RDS · S3)" },
+      { name: "AWS EC2" },
+      { name: "S3 · CloudFront" },
+      { name: "Nginx (SSE 튜닝)" },
+      { name: "PM2" },
       { name: "Docker" },
       { name: "GitHub Actions" },
-      { name: "Nginx" },
     ],
   },
   {
     category: "Tooling",
-    label: "Tooling",
-    description: "협업·품질 향상을 위한 도구",
+    label: "AI · Analytics",
+    description: "멀티 LLM 라우팅과 데이터 파이프라인",
     items: [
-      { name: "Git" },
-      { name: "Sentry" },
-      { name: "Notion" },
-      { name: "Figma" },
+      { name: "OpenAI · Gemini · Anthropic" },
+      { name: "Grok · DeepSeek · OpenRouter" },
+      { name: "Mixpanel" },
+      { name: "Meta SDK" },
+      { name: "Firebase / GA4" },
+      { name: "OneSignal" },
     ],
   },
 ];
 
 export const projects: Project[] = [
   {
-    name: "Sample Service",
-    period: "2025.01 — 진행 중",
-    role: "Backend / Mobile",
+    name: "AI 캐릭터 채팅 서비스",
+    period: "2026.02 — 2026.05 (3.5개월)",
+    role: "풀스택 단독 (Backend · Mobile · Web · Infra · Data)",
     description:
-      "NestJS API와 Flutter 앱을 함께 개발한 서비스 예시입니다. 카드 내용은 src/data/portfolio.ts 에서 수정하세요.",
+      "AI 캐릭터와 롤플레이 대화를 나누는 iOS · Android · Web 3-플랫폼 서비스. NestJS 백엔드 · Flutter 앱 · React 웹 · AWS 인프라 · 데이터 파이프라인까지 단독 개발·운영 중.",
     highlights: [
-      "도메인 주도 설계 기반 NestJS 모듈 구성",
-      "Flutter 단일 코드베이스로 iOS / Android 동시 출시",
-      "AWS ECS 위에 무중단 배포 파이프라인 구축",
+      "AI 비용 약 7배 절감 (실측 35원 → 5원대/턴), grok-nothink-apr11 프리셋 운영",
+      "채팅 응답 시간 10배+ 단축 (40초대 → 3~4초대), SSE + BullMQ 비동기 분리",
+      "Mixpanel / Meta / Firebase / OneSignal 4종 SDK 단일 진입점 fan-out, iOS SKAN 152개 등록",
+      "약 100,000줄 · 커밋 1,181건 · NestJS 도메인 모듈 30개 · DB 엔티티 24개",
     ],
-    tech: ["NestJS", "PostgreSQL", "Flutter", "Riverpod", "AWS ECS"],
-    links: [
-      {
-        kind: "appstore",
-        url: "https://apps.apple.com/app/idXXXXXXXXX",
-      },
-      {
-        kind: "playstore",
-        url: "https://play.google.com/store/apps/details?id=com.example",
-      },
-      {
-        kind: "github",
-        url: "https://github.com/your-handle/sample-service",
-      },
+    tech: [
+      "NestJS",
+      "Fastify",
+      "TypeScript",
+      "PostgreSQL",
+      "Redis",
+      "BullMQ",
+      "Flutter",
+      "Riverpod",
+      "React 19",
+      "AWS EC2",
+      "OpenRouter / Grok",
     ],
+    links: [],
+    brief: aiChatBrief,
+    detail: aiChatDetail,
   },
   {
-    name: "Internal Admin Tool",
-    period: "2024.08 — 2024.12",
-    role: "Backend",
+    name: "사주사이트",
+    period: "2026.02 — 2026.05 (3.5개월)",
+    role: "백엔드 · 풀스택 단독",
     description:
-      "운영팀이 사용하는 어드민 도구. 권한 분리와 감사 로그를 중점적으로 설계했습니다.",
+      "Node.js · Express 기반 사주 리포트 결제·발급 서비스. 토스페이먼츠 v2 전환, GPT 리포트 파이프라인, 관리자 백오피스, 사주 계산 엔진까지 단독 개발 (약 170 커밋).",
     highlights: [
-      "RBAC 기반 권한 체계 도입",
-      "주요 액션에 대한 감사 로그/알림 연동",
+      "토스페이먼츠 v1 → v2 전환 + 멱등성 기반 중복 결제·미발급 가드",
+      "신년사주 · 재회사주 신규 상품 풀스택 출시 (랜딩 → 미리보기 → 결제 → 리포트)",
+      "슈퍼어드민 권한 분리 + GPT_LOG · SMS msg_id 추적 인프라 구축",
+      "절기 · 진태양시 · 서머타임 · 대운수 등 사주 엔진 경계 버그 일소",
     ],
-    tech: ["NestJS", "Prisma", "PostgreSQL", "AWS"],
-    links: [
-      {
-        kind: "github",
-        url: "https://github.com/your-handle/internal-admin",
-      },
+    tech: [
+      "Node.js",
+      "Express",
+      "NestJS",
+      "Sequelize",
+      "MySQL",
+      "Toss Payments v2",
+      "OpenAI GPT",
+      "Aligo SMS",
+      "PM2",
+      "Jest",
+      "Playwright",
     ],
+    links: [],
+    brief: sajuBrief,
+    detail: sajuDetail,
   },
 ];
