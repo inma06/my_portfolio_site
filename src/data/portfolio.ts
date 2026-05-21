@@ -69,7 +69,7 @@ export const profile: Profile = {
   name: "박봉호(Leo)",
   title: "Backend & Mobile Engineer",
   tagline:
-    "NestJS · Node.js 백엔드와 Flutter 앱을 함께 만드는 풀스택 개발자입니다.",
+    "백엔드 · 프론트엔드 · Flutter 앱을 함께 만드는 풀스택 개발자입니다.",
   email: "leo0832010@gmail.com",
   phone: "+8210.4152.9841",
   github: "https://github.com/inma06",
