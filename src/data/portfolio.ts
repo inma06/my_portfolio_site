@@ -46,7 +46,7 @@ export interface Profile {
 }
 
 export const profile: Profile = {
-  name: "Bongho Pak",
+  name: "박봉호(Leo)",
   title: "Backend & Mobile Engineer",
   tagline:
     "NestJS · Node.js 백엔드와 Flutter 앱을 함께 만드는 풀스택 개발자입니다.",
