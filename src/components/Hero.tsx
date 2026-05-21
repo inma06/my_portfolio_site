@@ -1,7 +1,11 @@
 import { FiGithub, FiMail } from "react-icons/fi";
 import { profile } from "../data/portfolio";
+import { useTypewriter } from "../hooks/useTypewriter";
 
 export function Hero() {
+  const fullText = `안녕하세요,\n${profile.name} 입니다.`;
+  const typed = useTypewriter(fullText);
+
   return (
     <section
       id="hero"
@@ -14,10 +18,23 @@ export function Hero() {
       <p className="font-mono text-xs uppercase tracking-[0.3em] text-[var(--color-accent)]">
         {profile.title}
       </p>
-      <h1 className="mt-5 text-4xl font-semibold leading-tight tracking-tight text-[var(--color-text)] sm:text-6xl">
-        안녕하세요, <br className="hidden sm:block" />
-        <span className="text-white">{profile.name}</span> 입니다.
+
+      <h1
+        className="relative mt-5 text-4xl font-semibold leading-tight tracking-tight text-white sm:text-6xl"
+        aria-label={fullText.replace("\n", " ")}
+      >
+        <span aria-hidden className="invisible whitespace-pre-line">
+          {fullText}
+        </span>
+        <span
+          aria-hidden
+          className="absolute inset-0 whitespace-pre-line"
+        >
+          {typed}
+          <span className="caret">|</span>
+        </span>
       </h1>
+
       <p className="mt-6 max-w-2xl text-base leading-relaxed text-[var(--color-muted)] sm:text-lg">
         {profile.tagline}
       </p>

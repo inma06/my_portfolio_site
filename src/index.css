@@ -36,3 +36,22 @@ body {
   background: rgba(167, 139, 250, 0.25);
   color: #fff;
 }
+
+@keyframes caret-blink {
+  0%,
+  49% {
+    opacity: 1;
+  }
+  50%,
+  100% {
+    opacity: 0;
+  }
+}
+
+.caret {
+  display: inline-block;
+  margin-left: 0.05em;
+  font-weight: 300;
+  color: var(--color-accent);
+  animation: caret-blink 1s steps(1) infinite;
+}
