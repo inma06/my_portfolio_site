@@ -5,6 +5,7 @@ const NAV_ITEMS = [
   { id: "hero", label: "Home" },
   { id: "stack", label: "Tech Stack" },
   { id: "projects", label: "Projects" },
+  { id: "contact", label: "Contact" },
 ] as const;
 
 export function Header() {

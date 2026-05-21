@@ -60,7 +60,9 @@ export interface Profile {
   title: string;
   tagline: string;
   email: string;
+  phone: string;
   github: string;
+  kakao: string;
 }
 
 export const profile: Profile = {
@@ -69,7 +71,9 @@ export const profile: Profile = {
   tagline:
     "NestJS · Node.js 백엔드와 Flutter 앱을 함께 만드는 풀스택 개발자입니다.",
   email: "leo0832010@gmail.com",
+  phone: "+8210.4152.9841",
   github: "https://github.com/inma06",
+  kakao: "https://open.kakao.com/o/smU86Wvi",
 };
 
 export const stacks: StackGroup[] = [
