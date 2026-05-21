@@ -1,3 +1,4 @@
+import { Header } from "./components/Header";
 import { Hero } from "./components/Hero";
 import { TechStack } from "./components/TechStack";
 import { Projects } from "./components/Projects";
@@ -7,6 +8,7 @@ import "./App.css";
 function App() {
   return (
     <div className="min-h-screen bg-[var(--color-bg)] text-[var(--color-text)]">
+      <Header />
       <main>
         <Hero />
         <TechStack />

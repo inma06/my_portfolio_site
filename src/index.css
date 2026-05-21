@@ -17,12 +17,23 @@
   --color-accent: #a78bfa;
 }
 
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 4rem;
+}
+
 html,
 body,
 #root {
   background-color: var(--color-bg);
   color: var(--color-text);
   min-height: 100%;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
 }
 
 body {
@@ -55,4 +66,43 @@ body {
   font-weight: 300;
   color: var(--color-accent);
   animation: caret-blink 1s steps(1) infinite;
+}
+
+.mouse-outline {
+  width: 24px;
+  height: 38px;
+  border: 1.5px solid var(--color-muted);
+  border-radius: 14px;
+  display: flex;
+  justify-content: center;
+  padding-top: 6px;
+}
+
+.mouse-wheel {
+  width: 3px;
+  height: 7px;
+  background: var(--color-accent);
+  border-radius: 2px;
+  animation: mouse-wheel 1.8s ease-in-out infinite;
+}
+
+@keyframes mouse-wheel {
+  0% {
+    transform: translateY(0);
+    opacity: 0;
+  }
+  30% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(10px);
+    opacity: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mouse-wheel,
+  .caret {
+    animation: none;
+  }
 }
