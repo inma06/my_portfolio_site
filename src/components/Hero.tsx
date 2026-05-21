@@ -1,41 +1,14 @@
-import { useEffect, useRef, useState } from "react";
 import { FiCheck, FiCopy, FiGithub, FiMail } from "react-icons/fi";
 import { profile } from "../data/portfolio";
 import { useTypewriter } from "../hooks/useTypewriter";
+import { useCopyToClipboard } from "../hooks/useCopyToClipboard";
 import { ScrollIndicator } from "./ScrollIndicator";
 
 export function Hero() {
   const fullText = `안녕하세요,\n${profile.name} 입니다.`;
   const typed = useTypewriter(fullText);
-
-  const [copied, setCopied] = useState(false);
-  const resetTimer = useRef<number | undefined>(undefined);
-
-  useEffect(() => () => {
-    if (resetTimer.current) window.clearTimeout(resetTimer.current);
-  }, []);
-
-  const handleCopyEmail = async () => {
-    try {
-      if (navigator.clipboard?.writeText) {
-        await navigator.clipboard.writeText(profile.email);
-      } else {
-        const ta = document.createElement("textarea");
-        ta.value = profile.email;
-        ta.style.position = "fixed";
-        ta.style.opacity = "0";
-        document.body.appendChild(ta);
-        ta.select();
-        document.execCommand("copy");
-        document.body.removeChild(ta);
-      }
-      setCopied(true);
-      if (resetTimer.current) window.clearTimeout(resetTimer.current);
-      resetTimer.current = window.setTimeout(() => setCopied(false), 1500);
-    } catch {
-      // ignore — fallback above already attempted
-    }
-  };
+  const { copied, copy } = useCopyToClipboard();
+  const handleCopyEmail = () => copy(profile.email);
 
   return (
     <section
