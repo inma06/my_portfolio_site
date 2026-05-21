@@ -44,6 +44,7 @@ export interface Badge {
 
 export interface Project {
   name: string;
+  slug: string;
   period?: string;
   role?: string;
   description: string;
@@ -51,6 +52,7 @@ export interface Project {
   tech: string[];
   badges?: Badge[];
   links: ProjectLink[];
+  screenshots?: string[];
   brief?: string;
   detail?: string;
 }
@@ -138,6 +140,7 @@ export const stacks: StackGroup[] = [
 export const projects: Project[] = [
   {
     name: "AI 캐릭터 채팅 서비스",
+    slug: "ai-chat",
     period: "2026.02 — 2026.05 (3.5개월)",
     role: "풀스택 단독 (Backend · Mobile · Web · Infra · Data)",
     description:
@@ -184,6 +187,7 @@ export const projects: Project[] = [
   },
   {
     name: "사주 서비스",
+    slug: "saju",
     period: "2026.02 — 2026.05 (3.5개월)",
     role: "백엔드 · 풀스택 단독",
     description:
@@ -231,6 +235,7 @@ export const projects: Project[] = [
   },
   {
     name: "SNS 감사 일기",
+    slug: "sns-gratitude",
     period: "2022.05 — 2023.01",
     role: "Flutter 앱 단독",
     description:
@@ -266,6 +271,7 @@ export const projects: Project[] = [
   },
   {
     name: "유아동복 쇼핑몰",
+    slug: "kids-shop",
     period: "2021.07 — 2022.04 (10개월)",
     role: "Flutter 앱 프론트엔드 단독",
     description:

@@ -17,6 +17,7 @@ import { SiFlutter } from "react-icons/si";
 import type { IconType } from "react-icons";
 import { Section } from "./Section";
 import { ProjectDetailModal } from "./ProjectDetailModal";
+import { ScreenshotMarquee } from "./ScreenshotMarquee";
 import { projects } from "../data/portfolio";
 import type {
   Badge as BadgeData,
@@ -146,12 +147,19 @@ export function Projects() {
                 role={openable ? "button" : undefined}
                 tabIndex={openable ? 0 : undefined}
                 aria-label={openable ? `${project.name} 회고 열기` : undefined}
-                className={`group flex flex-col rounded-2xl border border-[var(--color-border)] bg-[var(--color-surface)] p-6 transition focus:outline-none ${
+                className={`group flex flex-col overflow-hidden rounded-2xl border border-[var(--color-border)] bg-[var(--color-surface)] p-6 transition focus:outline-none ${
                   openable
                     ? "cursor-pointer hover:-translate-y-0.5 hover:border-[var(--color-accent)]/60 hover:shadow-[0_10px_40px_-20px_rgba(167,139,250,0.4)] focus-visible:border-[var(--color-accent)]"
                     : ""
                 }`}
               >
+                {project.screenshots && project.screenshots.length > 0 && (
+                  <ScreenshotMarquee
+                    slug={project.slug}
+                    files={project.screenshots}
+                    alt={project.name}
+                  />
+                )}
                 <header className="mb-3 flex items-start justify-between gap-3">
                   <h3 className="text-lg font-semibold text-[var(--color-text)]">
                     {project.name}
