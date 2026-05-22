@@ -37,21 +37,16 @@ export function ImageLightbox({
   if (index === null) return null;
   const total = urls.length;
 
-
-  
-  
-
   return (
     <div
       role="dialog"
       aria-modal="true"
       className="fixed inset-0 z-[60] flex items-center justify-center bg-black/85 p-4 backdrop-blur-sm"
+      // 💡 최외각 div 배경 클릭 시 부모 카드로 이벤트가 전파되는 것을 완벽히 방지합니다.
       onClick={(e) => {
-      // 💡 부모 프로젝트 카드의 onClick이 호출되지 않도록 전파를 확실히 막아줍니다.
-      e.stopPropagation(); 
-      onClose();
-    }}
-
+        e.stopPropagation();
+        onClose();
+      }}
     >
       <button
         type="button"

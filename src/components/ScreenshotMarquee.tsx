@@ -14,16 +14,17 @@ export function ScreenshotMarquee({ slug, files, alt }: ScreenshotMarqueeProps) 
 
   const urls = files.map((f) => `/screenshots/${slug}/${f}`);
   const looped = [...urls, ...urls];
+  // Slower when many images so individual screenshots are readable
   const durationSec = Math.max(20, urls.length * 6);
 
-  // 모달이 열려있는지 여부 확인
+  // 💡 라이트박스 팝업이 활성화되었는지 확인하는 상태 변수입니다.
   const isLightboxOpen = active !== null;
 
   return (
     <>
       <div
-        // 💡 수정 포인트: 라이트박스 모달이 열려 있을 때는 마키 영역의 포인터 이벤트를 차단(pointer-events-none)하여
-        // 마우스 커서 이동 시 발생하는 부모/자식 간의 이벤트 버그 및 깜빡임을 원천 차단합니다.
+        // 💡 라이트박스가 열려 있을 경우, 최외각 영역 전체에 pointer-events-none을 적용해
+        // 마우스 커서가 섹션을 벗어날 때 발생하는 레이아웃 무한 깜빡임 버그를 원천 차단합니다.
         className={`relative -mx-6 -mt-6 mb-5 overflow-hidden bg-[var(--color-bg)] ${
           isLightboxOpen ? "pointer-events-none" : ""
         }`}
@@ -40,7 +41,7 @@ export function ScreenshotMarquee({ slug, files, alt }: ScreenshotMarqueeProps) 
 
         <ul
           className="marquee-track flex gap-3 py-4"
-          // 💡 추가 팁: 모달이 열렸을 때 뒤에서 마키가 웅성웅성 움직이면 연산이 꼬일 수 있으므로 애니메이션을 잠시 멈춰줍니다 (선택사항)
+          // 💡 라이트박스가 켜지면 뒤에서 흐르는 애니메이션도 일시 중지(paused)시켜 충돌을 예방합니다.
           style={
             {
               "--marquee-duration": `${durationSec}s`,
@@ -53,7 +54,7 @@ export function ScreenshotMarquee({ slug, files, alt }: ScreenshotMarqueeProps) 
               <button
                 type="button"
                 onClick={(e) => {
-                  e.stopPropagation(); // 부모 카드 클릭 방지
+                  e.stopPropagation();
                   setActive(i % urls.length);
                 }}
                 aria-label={`${alt} 캡처 ${(i % urls.length) + 1} 크게 보기`}
