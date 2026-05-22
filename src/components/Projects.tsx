@@ -7,7 +7,6 @@ import {
   FaAndroid,
 } from "react-icons/fa";
 import {
-  FiExternalLink,
   FiArrowRight,
   FiServer,
   FiGlobe,
@@ -34,7 +33,7 @@ const LINK_META: Record<
   appstore: { label: "App Store", Icon: FaAppStoreIos },
   playstore: { label: "Play Store", Icon: FaGooglePlay },
   github: { label: "GitHub", Icon: FaGithub },
-  website: { label: "Website", Icon: FiExternalLink },
+  website: { label: "Website", Icon: FiArrowRight },
 };
 
 const BADGE_META: Record<
@@ -116,7 +115,12 @@ function LinkButton({ link }: { link: ProjectLink }) {
   );
 }
 
-export function Projects() {
+// 💡 Props의 인자 타입을 명확하게 선언하여 implicitly 'any' 에러를 완전 차단합니다.
+interface ProjectsProps {
+  onOpenGlobalLightbox: (urls: string[], alt: string, index: number) => void;
+}
+
+export function Projects({ onOpenGlobalLightbox }: ProjectsProps) {
   const [activeProject, setActiveProject] = useState<Project | null>(null);
 
   return (
@@ -154,10 +158,14 @@ export function Projects() {
                 }`}
               >
                 {project.screenshots && project.screenshots.length > 0 && (
+                  /* 💡 인자 타입 선언을 추가하여 바인딩 오류를 없앱니다. */
                   <ScreenshotMarquee
                     slug={project.slug}
                     files={project.screenshots}
                     alt={project.name}
+                    onOpenLightbox={(urls: string[], alt: string, index: number) =>
+                      onOpenGlobalLightbox(urls, alt, index)
+                    }
                   />
                 )}
                 <header className="mb-3 flex items-start justify-between gap-3">
