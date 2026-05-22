@@ -4,9 +4,11 @@ import { TechStack } from "./components/TechStack";
 import { Projects } from "./components/Projects";
 import { Contact } from "./components/Contact";
 import { profile } from "./data/portfolio";
+import { useVisitorLogger } from './hooks/useVisitorLogger';
 import "./App.css";
 
 function App() {
+  useVisitorLogger();
   return (
     <div className="min-h-screen bg-[var(--color-bg)] text-[var(--color-text)]">
       <Header />
