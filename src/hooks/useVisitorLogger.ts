@@ -34,10 +34,7 @@ export function useVisitorLogger() {
           mode: 'no-cors', 
           body: formData
         });
-
-        console.log('방문자 로그(기기 정보 포함)가 구글 시트에 기록되었습니다.');
       } catch (error) {
-        console.error('방문 로그 전송 실패:', error);
       }
     };
 
