@@ -23,7 +23,7 @@ export default function App() {
   return (
     <div className="min-h-screen bg-[var(--color-bg)] text-[var(--color-text)] antialiased transition-colors duration-300">
       <Header />
-      <main className="mx-auto max-w-5xl px-4 py-24 sm:px-6 lg:px-8">
+      <main className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
         <Hero />
         {/* 💡 Projects 컴포넌트에 전역 라이트박스를 열 수 있는 핸들러 함수를 주입합니다. */}
         <Projects
