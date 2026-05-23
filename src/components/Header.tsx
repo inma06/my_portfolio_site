@@ -3,8 +3,8 @@ import { profile } from "../data/portfolio";
 
 const NAV_ITEMS = [
   { id: "hero", label: "Home" },
-  { id: "stack", label: "Tech Stack" },
   { id: "projects", label: "Projects" },
+  { id: "stack", label: "Tech Stack" },
   { id: "contact", label: "Contact" },
 ] as const;
 

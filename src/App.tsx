@@ -23,7 +23,7 @@ export default function App() {
 
   return (
     <div className="min-h-screen bg-[var(--color-bg)] text-[var(--color-text)] antialiased transition-colors duration-300">
-      <ScrollIndicator />
+      {/* <ScrollIndicator /> */}
       <Header />
       <main className="mx-auto max-w-5xl px-4 py-24 sm:px-6 lg:px-8">
         <Hero />
