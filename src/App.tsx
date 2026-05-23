@@ -4,7 +4,6 @@ import { Hero } from "./components/Hero";
 import { Projects } from "./components/Projects";
 import { TechStack } from "./components/TechStack";
 import { Contact } from "./components/Contact";
-import { ScrollIndicator } from "./components/ScrollIndicator";
 import { ImageLightbox } from "./components/ImageLightbox";
 import { useVisitorLogger } from "./hooks/useVisitorLogger";
 
@@ -23,7 +22,6 @@ export default function App() {
 
   return (
     <div className="min-h-screen bg-[var(--color-bg)] text-[var(--color-text)] antialiased transition-colors duration-300">
-      {/* <ScrollIndicator /> */}
       <Header />
       <main className="mx-auto max-w-5xl px-4 py-24 sm:px-6 lg:px-8">
         <Hero />
