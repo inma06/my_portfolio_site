@@ -1,0 +1,61 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="168" height="184" fill="none" viewBox="0 0 168 184">
+  <title>무료 기획서 개발의뢰까지</title>
+  <defs>
+    <filter id="shadow" width="150" height="154" x="9" y="-6" color-interpolation-filters="sRGB" filterUnits="userSpaceOnUse">
+      <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+      <feColorMatrix in="SourceAlpha" result="hardAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"/>
+      <feOffset dy="8"/>
+      <feGaussianBlur stdDeviation="8"/>
+      <feColorMatrix type="matrix" values="0 0 0 0 0.02 0 0 0 0 0.02 0 0 0 0 0.03 0 0 0 0.38 0"/>
+      <feBlend in2="BackgroundImageFix" mode="normal" result="effect1_dropShadow"/>
+      <feBlend in="SourceGraphic" in2="effect1_dropShadow" mode="normal" result="shape"/>
+    </filter>
+    <filter id="labelShadow" width="152" height="56" x="8" y="125" color-interpolation-filters="sRGB" filterUnits="userSpaceOnUse">
+      <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+      <feColorMatrix in="SourceAlpha" result="hardAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"/>
+      <feOffset dy="4"/>
+      <feGaussianBlur stdDeviation="6"/>
+      <feColorMatrix type="matrix" values="0 0 0 0 0.02 0 0 0 0 0.02 0 0 0 0 0.03 0 0 0 0.34 0"/>
+      <feBlend in2="BackgroundImageFix" mode="normal" result="effect1_dropShadow"/>
+      <feBlend in="SourceGraphic" in2="effect1_dropShadow" mode="normal" result="shape"/>
+    </filter>
+    <radialGradient id="accentGlow" cx="0" cy="0" r="1" gradientTransform="matrix(44 -32 31.5 43.32 102 35)" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#A78BFA" stop-opacity=".38"/>
+      <stop offset=".62" stop-color="#A78BFA" stop-opacity=".09"/>
+      <stop offset="1" stop-color="#A78BFA" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="bubbleStroke" x1="51" x2="122" y1="22" y2="108" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#A78BFA" stop-opacity=".72"/>
+      <stop offset=".45" stop-color="#3E3E48"/>
+      <stop offset="1" stop-color="#232329"/>
+    </linearGradient>
+    <linearGradient id="labelStroke" x1="39" x2="129" y1="134" y2="175" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#A78BFA" stop-opacity=".42"/>
+      <stop offset="1" stop-color="#232329"/>
+    </linearGradient>
+  </defs>
+
+  <g filter="url(#shadow)">
+    <path fill="#16161B" d="M84 11c29.271 0 53 22.995 53 51.36 0 28.363-23.729 51.358-53 51.358-6.56 0-12.842-1.155-18.642-3.267L44.9 118.38c-4.308 1.67-8.525-2.552-6.852-6.856l7.163-18.433C36.328 84.36 31 73.559 31 62.359 31 33.995 54.729 11 84 11Z"/>
+    <path fill="url(#accentGlow)" d="M84 11c29.271 0 53 22.995 53 51.36 0 28.363-23.729 51.358-53 51.358-6.56 0-12.842-1.155-18.642-3.267L44.9 118.38c-4.308 1.67-8.525-2.552-6.852-6.856l7.163-18.433C36.328 84.36 31 73.559 31 62.359 31 33.995 54.729 11 84 11Z"/>
+    <path stroke="url(#bubbleStroke)" stroke-width="2" d="M84 12c28.75 0 52 22.582 52 50.36 0 27.776-23.25 50.358-52 50.358-6.44 0-12.606-1.134-18.3-3.208l-.35-.127-.348.135-20.464 7.93c-3.47 1.345-6.866-2.054-5.558-5.507l.002-.004 7.163-18.433.233-.6-.46-.451C37.201 83.884 32 73.34 32 62.36 32 34.582 55.25 12 84 12Z"/>
+  </g>
+
+  <circle cx="84" cy="62" r="34" fill="#111114" opacity=".72"/>
+  <path stroke="#A78BFA" stroke-linecap="round" stroke-width="4.5" d="M64 54h36M64 66h27"/>
+  <path stroke="#8B8B95" stroke-linecap="round" stroke-width="4.5" d="M64 78h18"/>
+  <path fill="#E6E6EA" d="M107.138 41.502c.39-1.142 2.003-1.142 2.394 0l1.55 4.533c.126.37.416.66.786.786l4.533 1.55c1.142.39 1.142 2.003 0 2.394l-4.533 1.55c-.37.126-.66.416-.786.786l-1.55 4.533c-.39 1.142-2.003 1.142-2.394 0l-1.55-4.533a1.264 1.264 0 0 0-.786-.786l-4.533-1.55c-1.142-.39-1.142-2.003 0-2.394l4.533-1.55c.37-.126.66-.416.786-.786l1.55-4.533Z"/>
+  <circle cx="109" cy="50" r="14" stroke="#A78BFA" stroke-opacity=".24" stroke-width="1.5"/>
+  <circle cx="116" cy="79" r="4" fill="#A78BFA"/>
+
+  <g filter="url(#labelShadow)">
+    <rect width="126" height="44" x="21" y="134" fill="#111114" rx="14"/>
+    <rect width="125" height="43" x="21.5" y="134.5" stroke="url(#labelStroke)" rx="13.5"/>
+    <text fill="#E6E6EA" font-family="Inter, 'Noto Sans KR', 'Apple SD Gothic Neo', system-ui, sans-serif" font-size="15" font-weight="700" letter-spacing="0" text-anchor="middle">
+      <tspan x="84" y="153">무료 기획서</tspan>
+    </text>
+    <text fill="#A78BFA" font-family="Inter, 'Noto Sans KR', 'Apple SD Gothic Neo', system-ui, sans-serif" font-size="13" font-weight="650" letter-spacing="0" text-anchor="middle">
+      <tspan x="84" y="170">개발의뢰까지</tspan>
+    </text>
+  </g>
+</svg>
