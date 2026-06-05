@@ -1,13 +1,31 @@
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;600;700&display=swap");
 @import "tailwindcss";
 @plugin "@tailwindcss/typography";
+@custom-variant dark (&:where(.dark, .dark *, [data-theme="dark"], [data-theme="dark"] *));
 
 @theme {
-  --font-sans: "Inter", ui-sans-serif, system-ui, -apple-system, "Segoe UI",
-    Roboto, "Helvetica Neue", Arial, "Noto Sans KR", "Apple SD Gothic Neo",
+  --font-sans: "Noto Sans KR", ui-sans-serif, system-ui, -apple-system,
+    "Segoe UI", Roboto, "Helvetica Neue", Arial, "Apple SD Gothic Neo",
     sans-serif;
   --font-mono: ui-monospace, SFMono-Regular, "JetBrains Mono", Menlo, Consolas,
     monospace;
 
+  --color-bg: #f7f8fb;
+  --color-surface: #ffffff;
+  --color-surface-2: #eef2f7;
+  --color-border: #d9e0ea;
+  --color-muted: #526070;
+  --color-text: #17202e;
+  --color-accent: #2563eb;
+  --color-accent-strong: #1d4ed8;
+  --color-accent-soft: #dbeafe;
+  --color-shadow: rgba(15, 23, 42, 0.12);
+}
+
+html.dark,
+html[data-theme="dark"],
+body.dark,
+body[data-theme="dark"] {
   --color-bg: #0a0a0b;
   --color-surface: #111114;
   --color-surface-2: #16161b;
@@ -15,6 +33,9 @@
   --color-muted: #8b8b95;
   --color-text: #e6e6ea;
   --color-accent: #a78bfa;
+  --color-accent-strong: #c4b5fd;
+  --color-accent-soft: rgba(167, 139, 250, 0.16);
+  --color-shadow: rgba(0, 0, 0, 0.5);
 }
 
 html {
@@ -41,12 +62,13 @@ body {
   font-family: var(--font-sans);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  font-feature-settings: "ss01", "cv11";
+  word-break: keep-all;
+  text-rendering: optimizeLegibility;
 }
 
 ::selection {
-  background: rgba(167, 139, 250, 0.25);
-  color: #fff;
+  background: var(--color-accent-soft);
+  color: var(--color-text);
 }
 
 @keyframes caret-blink {

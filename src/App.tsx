@@ -6,6 +6,7 @@ import { TechStack } from "./components/TechStack";
 import { Contact } from "./components/Contact";
 import { ImageLightbox } from "./components/ImageLightbox";
 import { PrdAgent } from "./components/PrdAgent";
+import { PortfolioDownloadFab } from "./components/PortfolioDownloadFab";
 import { useVisitorLogger } from "./hooks/useVisitorLogger";
 
 // 전역 라이트박스 상태를 위한 타입 정의
@@ -62,6 +63,7 @@ export default function App() {
           }
         />
       )}
+      <PortfolioDownloadFab />
       <PrdAgent />
     </div>
   );

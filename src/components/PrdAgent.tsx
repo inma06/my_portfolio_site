@@ -9,6 +9,7 @@ import {
   FiX,
 } from "react-icons/fi";
 import ctaButton from "../assets/ai-prd-cta-button.svg";
+import ctaButtonLight from "../assets/ai-prd-cta-button-light.svg";
 import { Markdown } from "./Markdown";
 import { profile } from "../data/portfolio";
 import { trackPrdAgentEvent } from "../lib/trackPrdAgentEvent";
@@ -46,9 +47,9 @@ const PRIORITY_LABELS: Record<FeaturePriority, string> = {
 
 const PRIORITY_CLASSES: Record<FeaturePriority, string> = {
   required: "border-[var(--color-accent)]/60 text-[var(--color-text)]",
-  recommended: "border-sky-400/40 text-sky-200",
+  recommended: "border-sky-400/40 text-sky-700 dark:text-sky-200",
   optional: "border-[var(--color-border)] text-[var(--color-muted)]",
-  caution: "border-amber-300/50 text-amber-200",
+  caution: "border-amber-400/60 text-amber-700 dark:text-amber-200",
 };
 
 function CheckoutPanel({
@@ -286,7 +287,8 @@ export function PrdAgent() {
           right: "max(16px, calc((100vw - 64rem) / 2 - 148px))",
         }}
       >
-        <img src={ctaButton} alt="" className="h-auto w-full" />
+        <img src={ctaButtonLight} alt="" className="h-auto w-full dark:hidden" />
+        <img src={ctaButton} alt="" className="hidden h-auto w-full dark:block" />
       </button>
 
       {open && (
@@ -523,10 +525,10 @@ export function PrdAgent() {
                     )}
                     {riskAreas.length > 0 && (
                       <div className="rounded-2xl border border-amber-300/30 bg-amber-300/5 p-3">
-                        <p className="text-xs font-semibold text-amber-100">
+                        <p className="text-xs font-semibold text-amber-800 dark:text-amber-100">
                           전문가 검토 추천
                         </p>
-                        <p className="mt-2 text-xs text-amber-100/70">
+                        <p className="mt-2 text-xs text-amber-700 dark:text-amber-100/70">
                           {riskAreas.join(" · ")}
                         </p>
                       </div>

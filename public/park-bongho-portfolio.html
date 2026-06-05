@@ -1,0 +1,671 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8" />
+    <title>박봉호 포트폴리오</title>
+    <style>
+      @page {
+        size: A4;
+        margin: 18mm 16mm 18mm;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html,
+      body {
+        margin: 0;
+        padding: 0;
+        color: #17202e;
+        background: #ffffff;
+        font-family: "Noto Sans KR", "Apple SD Gothic Neo", "Malgun Gothic",
+          Arial, sans-serif;
+        font-size: 10.5pt;
+        line-height: 1.55;
+        word-break: keep-all;
+      }
+
+      body {
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+      }
+
+      h1,
+      h2,
+      h3,
+      p,
+      ul,
+      ol,
+      table {
+        margin-top: 0;
+      }
+
+      h1 {
+        margin-bottom: 8mm;
+        font-size: 16pt;
+        line-height: 1.35;
+        letter-spacing: 0;
+      }
+
+      h2 {
+        margin: 0 0 5mm;
+        padding-bottom: 2.5mm;
+        border-bottom: 1px solid #d9e0ea;
+        font-size: 14pt;
+        line-height: 1.4;
+        letter-spacing: 0;
+      }
+
+      h3 {
+        margin: 7mm 0 2.5mm;
+        font-size: 12pt;
+        line-height: 1.4;
+      }
+
+      p,
+      li,
+      td,
+      th {
+        font-size: 10.5pt;
+      }
+
+      a {
+        color: #1d4ed8;
+        text-decoration: none;
+      }
+
+      ul {
+        padding-left: 4.5mm;
+      }
+
+      li {
+        margin-bottom: 1.8mm;
+      }
+
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        page-break-inside: avoid;
+      }
+
+      th,
+      td {
+        padding: 2.2mm 2.4mm;
+        border: 1px solid #d9e0ea;
+        vertical-align: top;
+      }
+
+      th {
+        width: 28%;
+        background: #eef2f7;
+        font-weight: 700;
+        text-align: left;
+      }
+
+      .page {
+        min-height: 261mm;
+        page-break-after: always;
+      }
+
+      .page:last-child {
+        page-break-after: auto;
+      }
+
+      .cover {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+      }
+
+      .cover-top {
+        padding-top: 20mm;
+      }
+
+      .eyebrow {
+        margin-bottom: 4mm;
+        color: #2563eb;
+        font-size: 9pt;
+        font-weight: 700;
+      }
+
+      .cover-title {
+        margin-bottom: 6mm;
+        font-size: 16pt;
+        font-weight: 800;
+      }
+
+      .cover-subtitle {
+        max-width: 150mm;
+        color: #526070;
+        font-size: 11pt;
+      }
+
+      .cover-meta {
+        display: grid;
+        grid-template-columns: 28mm 1fr;
+        gap: 2.2mm 5mm;
+        padding: 7mm;
+        border: 1px solid #d9e0ea;
+        background: #f7f8fb;
+      }
+
+      .cover-meta dt {
+        color: #526070;
+        font-size: 9.5pt;
+        font-weight: 700;
+      }
+
+      .cover-meta dd {
+        margin: 0;
+        font-size: 10.5pt;
+      }
+
+      .toc-list {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+      }
+
+      .toc-list li {
+        display: flex;
+        justify-content: space-between;
+        gap: 8mm;
+        padding: 3mm 0;
+        border-bottom: 1px solid #e8edf4;
+      }
+
+      .toc-title {
+        font-weight: 700;
+      }
+
+      .toc-meta {
+        color: #526070;
+        text-align: right;
+        white-space: nowrap;
+      }
+
+      .project {
+        page-break-before: always;
+      }
+
+      .project:first-of-type {
+        page-break-before: auto;
+      }
+
+      .project-head {
+        margin-bottom: 5mm;
+      }
+
+      .project-kicker {
+        margin-bottom: 1.5mm;
+        color: #2563eb;
+        font-size: 9pt;
+        font-weight: 700;
+      }
+
+      .summary-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 3mm;
+        margin: 5mm 0 6mm;
+      }
+
+      .summary-card {
+        min-height: 22mm;
+        padding: 4mm;
+        border: 1px solid #d9e0ea;
+        background: #f7f8fb;
+        page-break-inside: avoid;
+      }
+
+      .summary-card strong {
+        display: block;
+        margin-bottom: 1.5mm;
+        color: #17202e;
+        font-size: 10pt;
+      }
+
+      .summary-card span {
+        color: #526070;
+      }
+
+      .chips {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1.8mm;
+        margin: 3mm 0 6mm;
+        padding: 0;
+        list-style: none;
+      }
+
+      .chips li {
+        margin: 0;
+        padding: 1.2mm 2.2mm;
+        border: 1px solid #d9e0ea;
+        background: #eef2f7;
+        color: #17202e;
+        font-size: 9pt;
+      }
+
+      .note {
+        margin-top: 5mm;
+        padding: 3mm 4mm;
+        border-left: 3px solid #2563eb;
+        background: #f7f8fb;
+        color: #526070;
+      }
+
+      .print-link {
+        color: #526070;
+        font-size: 9pt;
+        overflow-wrap: anywhere;
+      }
+
+      .compact {
+        margin-bottom: 3mm;
+      }
+
+      @media screen {
+        body {
+          background: #eef2f7;
+        }
+
+        .page {
+          width: 210mm;
+          min-height: 297mm;
+          margin: 12mm auto;
+          padding: 18mm 16mm;
+          background: #ffffff;
+          box-shadow: 0 16px 50px rgba(15, 23, 42, 0.16);
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <section class="page cover">
+      <div class="cover-top">
+        <p class="eyebrow">Portfolio Book</p>
+        <h1 class="cover-title">박봉호 포트폴리오</h1>
+        <p class="cover-subtitle">
+          백엔드, Flutter 앱, React 웹, 인프라, AI/LLM 파이프라인까지 제품
+          출시와 운영 관점에서 정리한 프로젝트 포트폴리오입니다.
+        </p>
+      </div>
+
+      <dl class="cover-meta">
+        <dt>이름</dt>
+        <dd>박봉호(Leo)</dd>
+        <dt>직무</dt>
+        <dd>Backend &amp; Mobile Engineer</dd>
+        <dt>최신 업데이트</dt>
+        <dd>2026.06.05</dd>
+        <dt>이메일</dt>
+        <dd>leo0832010@gmail.com</dd>
+        <dt>전화</dt>
+        <dd>+82 10-4152-9841</dd>
+        <dt>GitHub</dt>
+        <dd>https://github.com/inma06</dd>
+        <dt>카카오 오픈채팅</dt>
+        <dd>https://open.kakao.com/o/smU86Wvi</dd>
+      </dl>
+    </section>
+
+    <section class="page">
+      <h1>목차</h1>
+      <ol class="toc-list">
+        <li>
+          <span class="toc-title">AI 캐릭터 채팅 서비스</span>
+          <span class="toc-meta">2026.02 - 2026.05</span>
+        </li>
+        <li>
+          <span class="toc-title">사주 서비스</span>
+          <span class="toc-meta">2026.02 - 2026.05</span>
+        </li>
+        <li>
+          <span class="toc-title">SNS 감사 일기</span>
+          <span class="toc-meta">2022.05 - 2023.01</span>
+        </li>
+        <li>
+          <span class="toc-title">유아동복 쇼핑몰</span>
+          <span class="toc-meta">2021.07 - 2022.04</span>
+        </li>
+      </ol>
+
+      <p class="note">
+        본 문서는 이력서를 제외한 포트폴리오 전용 문서입니다. 프로젝트는 최신순으로
+        배치했으며, 일반 프린터 출력 기준으로 제목 16pt, 소제목 14pt, 본문 12pt
+        이하의 A4 서식으로 구성했습니다.
+      </p>
+    </section>
+
+    <main>
+      <article class="page project">
+        <header class="project-head">
+          <p class="project-kicker">2026.02 - 2026.05 / 풀스택 단독</p>
+          <h1>AI 캐릭터 채팅 서비스</h1>
+          <p>
+            AI 캐릭터와 롤플레이 대화를 나누는 iOS, Android, Web 3-플랫폼
+            서비스입니다. NestJS 백엔드, Flutter 앱, React 웹, AWS 인프라,
+            데이터 파이프라인까지 단독 개발·운영했습니다.
+          </p>
+        </header>
+
+        <table>
+          <tbody>
+            <tr>
+              <th>역할</th>
+              <td>Backend · Mobile · Web · Infra · Data 전 영역 단독 개발</td>
+            </tr>
+            <tr>
+              <th>규모</th>
+              <td>약 100,000줄, 커밋 1,181건, NestJS 도메인 모듈 30개, DB 엔티티 24개</td>
+            </tr>
+            <tr>
+              <th>플랫폼</th>
+              <td>iOS · Android · Web(PWA)</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <div class="summary-grid">
+          <div class="summary-card">
+            <strong>AI 비용 절감</strong>
+            <span>Sonnet 35원/턴에서 운영 프리셋 5원대/턴까지 약 7배 절감</span>
+          </div>
+          <div class="summary-card">
+            <strong>응답 속도 개선</strong>
+            <span>40초대 응답을 SSE + BullMQ + 모델 분리로 3~4초대로 단축</span>
+          </div>
+          <div class="summary-card">
+            <strong>분석 인프라</strong>
+            <span>Mixpanel, Meta, Firebase/GA4, OneSignal 단일 진입점 fan-out</span>
+          </div>
+          <div class="summary-card">
+            <strong>운영 안정성</strong>
+            <span>듀얼 JWT, Redis, 비관적 잠금, 멱등성 키, 정확 환불 플로우 구축</span>
+          </div>
+        </div>
+
+        <h2>핵심 구현</h2>
+        <ul>
+          <li>
+            Fastify 기반 SSE 스트리밍에서 `reply.hijack`, `flushHeaders`,
+            `socket.setNoDelay`를 적용해 첫 청크 지연을 줄였습니다.
+          </li>
+          <li>
+            scene, atmosphere, final을 분리한 `grok-nothink-apr11` 프리셋으로
+            품질을 유지하면서 reasoning 토큰 낭비를 줄였습니다.
+          </li>
+          <li>
+            Spark 화폐 차감은 PostgreSQL `SELECT ... FOR UPDATE`와 FIFO charge
+            차감으로 동시성 문제와 잔액 음수화를 방어했습니다.
+          </li>
+          <li>
+            AI 실패 시 차감 row를 기록한 `ConsumedRow[]` 기반으로 정확 환불되도록
+            설계했습니다.
+          </li>
+          <li>
+            iOS SKAN 152개 네트워크 등록과 결제/채팅 이벤트 택소노미를 구축해
+            광고 최적화와 제품 분석을 동시에 지원했습니다.
+          </li>
+        </ul>
+
+        <h2>기술 스택</h2>
+        <ul class="chips">
+          <li>NestJS</li>
+          <li>Fastify</li>
+          <li>TypeScript</li>
+          <li>PostgreSQL</li>
+          <li>Redis</li>
+          <li>BullMQ</li>
+          <li>Flutter</li>
+          <li>Riverpod</li>
+          <li>React 19</li>
+          <li>AWS EC2</li>
+          <li>OpenRouter / Grok</li>
+        </ul>
+
+        <p class="print-link compact">
+          App Store:
+          https://apps.apple.com/kr/app/디퍼-deeper-ai-캐릭터와-더-깊은-대화/id6761097402
+        </p>
+        <p class="print-link">
+          Play Store:
+          https://play.google.com/store/apps/details?id=kr.lowtone.aichat
+        </p>
+      </article>
+
+      <article class="page project">
+        <header class="project-head">
+          <p class="project-kicker">2026.02 - 2026.05 / 백엔드 · 풀스택 단독</p>
+          <h1>사주 서비스</h1>
+          <p>
+            생년월일, 태어난 시, 성별을 기반으로 GPT 리포트를 발급하는 결제형
+            사주 웹 서비스입니다. 결제, 리포트 생성, 관리자 백오피스, 사주 계산
+            엔진, NestJS 점진 마이그레이션을 담당했습니다.
+          </p>
+        </header>
+
+        <table>
+          <tbody>
+            <tr>
+              <th>역할</th>
+              <td>백엔드 핵심 도메인 및 운영 백오피스 단독 개발</td>
+            </tr>
+            <tr>
+              <th>규모</th>
+              <td>약 3.5개월, 약 170건 커밋</td>
+            </tr>
+            <tr>
+              <th>서비스 범위</th>
+              <td>결제, GPT 리포트, SMS, 관리자, 외부 API, 마케팅 전환 추적</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <h2>핵심 구현</h2>
+        <ul>
+          <li>
+            토스페이먼츠 v1에서 v2로 전환하며 위젯 렌더링 완료 감지, 중복 초기화
+            가드, 주문번호 기반 멱등성 처리를 추가했습니다.
+          </li>
+          <li>
+            신년사주와 재회사주 상품을 랜딩, 미리보기, 결제, 리포트 생성까지
+            풀스택으로 출시했습니다.
+          </li>
+          <li>
+            bcrypt 로그인과 슈퍼어드민 권한 분리를 적용한 관리자 백오피스를 만들고,
+            리포트 재발급, GPT 진행률, 결제-리포트 추적을 지원했습니다.
+          </li>
+          <li>
+            절기, 진태양시, 서머타임, 지역시, 대운수 계산을 보정해 사주 엔진의
+            경계 케이스 오류를 줄였습니다.
+          </li>
+          <li>
+            Express 레거시 구조 위에 NestJS 마이그레이션, Repository 패턴,
+            통합 에러 처리, Jest/Playwright 테스트 기반을 단계적으로 도입했습니다.
+          </li>
+        </ul>
+
+        <h2>성과 요약</h2>
+        <table>
+          <tbody>
+            <tr>
+              <th>결제 안정성</th>
+              <td>중복 결제, 미발급, 콜백 누락 케이스를 멱등성과 서버 검증으로 방어</td>
+            </tr>
+            <tr>
+              <th>운영 추적성</th>
+              <td>GPT_LOG, SMS msg_id, shopOrderNo 기반 리포트 추적 체계 구축</td>
+            </tr>
+            <tr>
+              <th>전환 개선</th>
+              <td>미리보기 블러, 번들 상품, 가격 분기, Meta Pixel Purchase 개선</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <h2>기술 스택</h2>
+        <ul class="chips">
+          <li>Node.js</li>
+          <li>Express</li>
+          <li>NestJS</li>
+          <li>Sequelize</li>
+          <li>MySQL</li>
+          <li>EJS</li>
+          <li>Toss Payments v2</li>
+          <li>OpenAI GPT</li>
+          <li>Aligo SMS</li>
+          <li>PM2</li>
+          <li>Jest</li>
+          <li>Playwright</li>
+        </ul>
+      </article>
+
+      <article class="page project">
+        <header class="project-head">
+          <p class="project-kicker">2022.05 - 2023.01 / Flutter 앱 단독</p>
+          <h1>SNS 감사 일기</h1>
+          <p>
+            일상의 감사를 카드와 짧은 글로 표현하는 감성 SNS 앱입니다. iOS와
+            Android 동시 운영, SNS 도메인, 알림, 팔로우, 작성/조회, 카드 선물하기
+            결제 흐름을 담당했습니다.
+          </p>
+        </header>
+
+        <h2>핵심 구현</h2>
+        <ul>
+          <li>
+            dev, staging, prod Flutter Flavor와 Fastlane을 정비해 QA 빌드 전달과
+            스토어 업로드 사이클을 단축했습니다.
+          </li>
+          <li>
+            BLoC와 DDD 스타일의 Layered Architecture를 적용해 화면 로직, 도메인,
+            인프라 의존성을 분리했습니다.
+          </li>
+          <li>
+            Firestore 직접 접근 구조에서 AWS Lambda + PostgreSQL 기반 REST 구조로
+            넘어가며 클라이언트 데이터 모델과 Repository 구현을 재구성했습니다.
+          </li>
+          <li>
+            Google UGC 정책 반려에 대응해 신고, 차단, 모더레이션 흐름과 정책 문구를
+            정비했습니다.
+          </li>
+          <li>
+            아임포트 SDK로 감사 카드 선물하기 결제 요청, 결과 콜백, 서버 검증,
+            카드 발송 흐름을 구현했습니다.
+          </li>
+        </ul>
+
+        <h2>성과 요약</h2>
+        <table>
+          <tbody>
+            <tr>
+              <th>CI/CD</th>
+              <td>Flavor + Fastlane으로 환경별 빌드와 배포 자동화</td>
+            </tr>
+            <tr>
+              <th>아키텍처</th>
+              <td>도메인과 인프라 분리로 백엔드 교체에 견디는 구조 확보</td>
+            </tr>
+            <tr>
+              <th>스토어 대응</th>
+              <td>UGC 정책 반려 대응 경험을 이후 프로젝트 심사 대응 패턴으로 축적</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <h2>기술 스택</h2>
+        <ul class="chips">
+          <li>Flutter</li>
+          <li>Dart</li>
+          <li>BLoC</li>
+          <li>DDD</li>
+          <li>Layered Architecture</li>
+          <li>Firebase</li>
+          <li>AWS Lambda</li>
+          <li>PostgreSQL</li>
+          <li>Fastlane</li>
+          <li>Flutter Flavor</li>
+          <li>아임포트</li>
+        </ul>
+      </article>
+
+      <article class="page project">
+        <header class="project-head">
+          <p class="project-kicker">2021.07 - 2022.04 / Flutter 앱 프론트엔드 단독</p>
+          <h1>유아동복 쇼핑몰</h1>
+          <p>
+            유아동복 쇼핑몰 모바일 앱의 프론트엔드 전반을 단독 담당했습니다.
+            초기 셋업부터 1.3.0 정식 출시까지 Flutter로 iOS와 Android 동시
+            개발·운영을 진행했습니다.
+          </p>
+        </header>
+
+        <h2>핵심 구현</h2>
+        <ul>
+          <li>
+            초기 단독 개발 환경에 맞춰 GetX를 도입하고 라우팅, 상태, 의존성 주입을
+            일관되게 정리했습니다.
+          </li>
+          <li>
+            빠른 탭, 푸시, 딥링크로 같은 화면이 여러 번 쌓이는 문제를 라우팅 가드와
+            중복 push 차단 규칙으로 해결했습니다.
+          </li>
+          <li>
+            Firebase Auth, FCM, Crashlytics를 통합해 로그인, 푸시, 운영 중 크래시
+            추적을 안정화했습니다.
+          </li>
+          <li>
+            아임포트 결제와 서버 검증 흐름을 묶어 결제 콜백 누락, 사용자 이탈,
+            네트워크 단절 상황에서도 정합성을 유지하도록 했습니다.
+          </li>
+          <li>
+            서버 설정만으로 제어 가능한 권장/강제 업데이트 게이트를 만들어 구버전
+            결제·인증 이슈 대응 시간을 줄였습니다.
+          </li>
+        </ul>
+
+        <h2>성과 요약</h2>
+        <table>
+          <tbody>
+            <tr>
+              <th>단독 책임</th>
+              <td>초기 셋업부터 1.3.0 정식 출시까지 앱 프론트엔드 전반 담당</td>
+            </tr>
+            <tr>
+              <th>운영 안정화</th>
+              <td>Firebase, 결제, 강제 업데이트, 스토어 심사 흐름 구축</td>
+            </tr>
+            <tr>
+              <th>마케팅 추적</th>
+              <td>Airbridge SDK로 설치, 회원가입, 결제 등 전환 이벤트 송신</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <h2>기술 스택</h2>
+        <ul class="chips">
+          <li>Flutter</li>
+          <li>Dart</li>
+          <li>GetX</li>
+          <li>Firebase Auth</li>
+          <li>FCM</li>
+          <li>Crashlytics</li>
+          <li>아임포트</li>
+          <li>Airbridge</li>
+        </ul>
+
+        <p class="print-link compact">
+          App Store:
+          https://apps.apple.com/kr/app/키즈닝/id1599682755
+        </p>
+        <p class="print-link">
+          Play Store:
+          https://play.google.com/store/apps/details?id=kr.milkcorp.kidsning
+        </p>
+      </article>
+    </main>
+  </body>
+</html>

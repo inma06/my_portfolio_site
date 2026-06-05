@@ -43,34 +43,34 @@ const BADGE_META: Record<
   backend: {
     label: "Back-End",
     Icon: FiServer,
-    cls: "border-emerald-500/30 bg-emerald-500/10 text-emerald-300",
+    cls: "border-emerald-500/30 bg-emerald-500/10 text-emerald-700 dark:text-emerald-300",
   },
   web: {
     label: "Front-End",
     fallback: "Web",
     Icon: FiGlobe,
-    cls: "border-sky-500/30 bg-sky-500/10 text-sky-300",
+    cls: "border-sky-500/30 bg-sky-500/10 text-sky-700 dark:text-sky-300",
   },
   app: {
     label: "Front-End",
     fallback: "App",
     Icon: FiSmartphone,
-    cls: "border-violet-500/30 bg-violet-500/10 text-violet-300",
+    cls: "border-violet-500/30 bg-violet-500/10 text-violet-700 dark:text-violet-300",
   },
   ios: {
     label: "iOS",
     Icon: FaApple,
-    cls: "border-zinc-500/30 bg-zinc-500/10 text-zinc-200",
+    cls: "border-zinc-500/30 bg-zinc-500/10 text-zinc-700 dark:text-zinc-200",
   },
   aos: {
     label: "AOS",
     Icon: FaAndroid,
-    cls: "border-lime-500/30 bg-lime-500/10 text-lime-300",
+    cls: "border-lime-500/30 bg-lime-500/10 text-lime-700 dark:text-lime-300",
   },
   flutter: {
     label: "Flutter",
     Icon: SiFlutter,
-    cls: "border-cyan-500/30 bg-cyan-500/10 text-cyan-300",
+    cls: "border-cyan-500/30 bg-cyan-500/10 text-cyan-700 dark:text-cyan-300",
   },
 };
 
@@ -107,7 +107,7 @@ function LinkButton({ link }: { link: ProjectLink }) {
       target="_blank"
       rel="noreferrer noopener"
       onClick={(e) => e.stopPropagation()}
-      className="group inline-flex items-center gap-2 rounded-lg border border-[var(--color-border)] bg-[var(--color-surface-2)] px-3 py-1.5 text-xs text-[var(--color-text)] transition hover:border-[var(--color-accent)] hover:text-white"
+      className="group inline-flex items-center gap-2 rounded-lg border border-[var(--color-border)] bg-[var(--color-surface-2)] px-3 py-1.5 text-xs text-[var(--color-text)] transition hover:border-[var(--color-accent)] hover:text-[var(--color-accent)]"
     >
       <Icon className="h-3.5 w-3.5 text-[var(--color-muted)] transition group-hover:text-[var(--color-accent)]" />
       {link.label ?? meta.label}
@@ -131,7 +131,7 @@ export function Projects({ onOpenGlobalLightbox }: ProjectsProps) {
         title="만든 것들"
         description="카드를 클릭하면 간략 회고가 열리고, 거기서 한 번 더 누르면 상세 회고로 이어집니다."
       >
-        <div className="grid grid-cols-1 gap-5 md:grid-cols-2">
+        <div className="grid grid-cols-1 gap-7">
           {projects.map((project) => {
             const openable = !!project.brief || !!project.detail;
             return (
@@ -151,9 +151,9 @@ export function Projects({ onOpenGlobalLightbox }: ProjectsProps) {
                 role={openable ? "button" : undefined}
                 tabIndex={openable ? 0 : undefined}
                 aria-label={openable ? `${project.name} 회고 열기` : undefined}
-                className={`group flex flex-col overflow-hidden rounded-2xl border border-[var(--color-border)] bg-[var(--color-surface)] p-6 transition focus:outline-none ${
+                className={`group flex flex-col overflow-hidden rounded-2xl border border-[var(--color-border)] bg-[var(--color-surface)] p-6 shadow-[0_18px_60px_-42px_var(--color-shadow)] transition focus:outline-none sm:p-8 ${
                   openable
-                    ? "cursor-pointer hover:-translate-y-0.5 hover:border-[var(--color-accent)]/60 hover:shadow-[0_10px_40px_-20px_rgba(167,139,250,0.4)] focus-visible:border-[var(--color-accent)]"
+                    ? "cursor-pointer hover:-translate-y-0.5 hover:border-[var(--color-accent)]/60 hover:shadow-[0_24px_70px_-42px_var(--color-shadow)] focus-visible:border-[var(--color-accent)]"
                     : ""
                 }`}
               >
@@ -168,8 +168,8 @@ export function Projects({ onOpenGlobalLightbox }: ProjectsProps) {
                     }
                   />
                 )}
-                <header className="mb-3 flex items-start justify-between gap-3">
-                  <h3 className="text-lg font-semibold text-[var(--color-text)]">
+                <header className="mb-3 flex flex-col gap-2 sm:flex-row sm:items-start sm:justify-between sm:gap-4">
+                  <h3 className="text-xl font-semibold text-[var(--color-text)] sm:text-2xl">
                     {project.name}
                   </h3>
                   {project.period && (
@@ -192,12 +192,12 @@ export function Projects({ onOpenGlobalLightbox }: ProjectsProps) {
                     ))}
                   </ul>
                 )}
-                <p className="text-sm leading-relaxed text-[var(--color-muted)]">
+                <p className="text-base leading-8 text-[var(--color-muted)]">
                   {project.description}
                 </p>
 
                 {project.highlights && project.highlights.length > 0 && (
-                  <ul className="mt-4 space-y-1.5 text-sm text-[var(--color-muted)]">
+                  <ul className="mt-5 space-y-2 text-sm leading-7 text-[var(--color-muted)] sm:text-base">
                     {project.highlights.map((line) => (
                       <li key={line} className="flex gap-2">
                         <span className="mt-1.5 h-1 w-1 shrink-0 rounded-full bg-[var(--color-accent)]/70" />

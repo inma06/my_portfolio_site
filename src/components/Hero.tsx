@@ -17,14 +17,14 @@ export function Hero() {
     >
       <div
         aria-hidden
-        className="pointer-events-none absolute inset-x-0 top-0 -z-10 h-[420px] bg-[radial-gradient(60%_60%_at_50%_0%,rgba(167,139,250,0.18),transparent_70%)]"
+        className="pointer-events-none absolute inset-x-0 top-0 -z-10 h-[420px] bg-[radial-gradient(60%_60%_at_50%_0%,var(--color-accent-soft),transparent_70%)]"
       />
       <p className="font-mono text-xs uppercase tracking-[0.3em] text-[var(--color-accent)]">
         {profile.title}
       </p>
 
       <h1
-        className="relative mt-5 text-4xl font-semibold leading-tight tracking-tight text-white sm:text-6xl"
+        className="relative mt-5 text-4xl font-semibold leading-tight text-[var(--color-text)] sm:text-6xl"
         aria-label={fullText.replace("\n", " ")}
       >
         <span aria-hidden className="invisible whitespace-pre-line">

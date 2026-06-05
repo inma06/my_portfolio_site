@@ -21,7 +21,7 @@ export function ScreenshotMarquee({
 
   return (
     <div
-      className="relative -mx-6 -mt-6 mb-5 overflow-hidden bg-[var(--color-bg)]"
+      className="relative -mx-6 -mt-6 mb-6 overflow-hidden bg-[var(--color-bg)] sm:-mx-8 sm:-mt-8"
       onClick={(e) => e.stopPropagation()} // 마키 슬라이더 터치 시 부모 프로젝트 요약 카드가 들리는 오류 방어
     >
       <div
@@ -54,7 +54,7 @@ export function ScreenshotMarquee({
                 alt=""
                 loading="lazy"
                 draggable={false}
-                className="block h-32 w-auto select-none object-cover sm:h-36"
+                className="block h-36 w-auto select-none object-cover sm:h-44 lg:h-52"
               />
             </button>
           </li>

@@ -1,5 +1,5 @@
 import type { IconType } from "react-icons";
-import { FiCheck, FiCopy, FiMail, FiPhone } from "react-icons/fi";
+import { FiCheck, FiCopy, FiDownload, FiFileText, FiMail, FiPhone } from "react-icons/fi";
 import { SiKakaotalk } from "react-icons/si";
 import { Section } from "./Section";
 import { profile } from "../data/portfolio";
@@ -73,6 +73,37 @@ function ContactRow({
   );
 }
 
+function DownloadRow() {
+  return (
+    <article className="group flex items-center gap-4 rounded-2xl border border-[var(--color-border)] bg-[var(--color-surface)] p-5 transition hover:border-[var(--color-accent)]/60 sm:col-span-2">
+      <span className="inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-xl border border-[var(--color-border)] bg-[var(--color-surface-2)] text-[var(--color-accent)]">
+        <FiFileText className="h-4 w-4" />
+      </span>
+      <div className="min-w-0 flex-1">
+        <p className="font-mono text-[10px] uppercase tracking-[0.2em] text-[var(--color-muted)]">
+          다운로드
+        </p>
+        <a
+          href="/park-bongho-portfolio.pdf"
+          download
+          className="block truncate text-sm font-medium text-[var(--color-text)] transition hover:text-[var(--color-accent)] sm:text-base"
+        >
+          박봉호 포트폴리오 PDF
+        </a>
+      </div>
+      <a
+        href="/park-bongho-portfolio.pdf"
+        download
+        aria-label="포트폴리오 PDF 다운로드"
+        title="PDF 다운로드"
+        className="shrink-0 rounded-lg border border-[var(--color-border)] bg-[var(--color-surface-2)] p-2 text-[var(--color-muted)] transition hover:border-[var(--color-accent)] hover:text-[var(--color-accent)]"
+      >
+        <FiDownload className="h-4 w-4" />
+      </a>
+    </article>
+  );
+}
+
 export function Contact() {
   const phoneDisplay = formatPhoneDisplay(profile.phone);
   const phoneTel = formatPhoneTel(profile.phone);
@@ -99,6 +130,7 @@ export function Contact() {
           copyValue={phoneDisplay}
           href={`tel:${phoneTel}`}
         />
+        <DownloadRow />
         <ContactRow
           Icon={SiKakaotalk}
           label="카카오 오픈채팅"
@@ -106,7 +138,7 @@ export function Contact() {
           copyValue={profile.kakao}
           href={profile.kakao}
           className="sm:col-span-2"
-          iconClassName="text-yellow-300"
+          iconClassName="text-yellow-400"
         />
       </div>
     </Section>
