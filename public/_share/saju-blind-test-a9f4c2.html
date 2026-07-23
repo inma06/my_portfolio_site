@@ -31,6 +31,11 @@ body{margin:0;background:var(--desk);color:var(--ink);
 .count b{color:#fff;font-weight:600}
 .go-share{font-size:12px;color:#0F1216;background:#D6DBE2;border:0;border-radius:2px;padding:6px 12px;cursor:pointer;font-weight:500;font-family:inherit}
 .go-share:hover{background:#fff}
+.test-switch{display:flex;gap:6px;flex-wrap:wrap;margin-top:10px}
+.test-switch a{font-size:12px;color:#C4CBD5;text-decoration:none;border:1px solid rgba(255,255,255,.18);
+  border-radius:2px;padding:6px 10px;line-height:1;background:rgba(255,255,255,.04)}
+.test-switch a:hover{border-color:rgba(255,255,255,.45);color:#fff}
+.test-switch a.active{background:#F1EFEA;color:#15191F;border-color:#F1EFEA;font-weight:700}
 .strip{display:flex;gap:3px;margin-top:10px;overflow-x:auto;padding-bottom:2px}
 .cell{flex:1 1 0;min-width:30px;height:26px;border-radius:2px;position:relative;
   background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.1);
@@ -203,10 +208,15 @@ body.revealed #lock{display:none}
 <div class="bar">
   <div class="bar-in">
     <div class="bar-top">
-      <h1 class="brand">사주풀이지 블라인드 테스트<small>blind samples</small></h1>
+      <h1 class="brand">사주풀이지 블라인드 테스트<small>박봉호 · blind samples</small></h1>
       <span class="count"><b id="done">0</b> / 18 판정</span>
       <button class="go-share" id="jumpShare" type="button">공유·채점</button>
     </div>
+    <nav class="test-switch" aria-label="테스트 대상 선택">
+      <a class="active" href="saju-blind-test-a9f4c2.html">박봉호</a>
+      <a href="saju-blind-test-jaemin.html">이재민</a>
+      <a href="saju-blind-test-boram.html">박보람</a>
+    </nav>
     <nav class="strip" id="strip" aria-label="샘플 바로가기"><a class="cell" href="#s1" data-i="0" title="S-01"><span>01</span><i class="env"></i></a><a class="cell" href="#s2" data-i="1" title="S-02"><span>02</span><i class="env"></i></a><a class="cell" href="#s3" data-i="2" title="S-03"><span>03</span><i class="env"></i></a><a class="cell" href="#s4" data-i="3" title="S-04"><span>04</span><i class="env"></i></a><a class="cell" href="#s5" data-i="4" title="S-05"><span>05</span><i class="env"></i></a><a class="cell" href="#s6" data-i="5" title="S-06"><span>06</span><i class="env"></i></a><a class="cell" href="#s7" data-i="6" title="S-07"><span>07</span><i class="env"></i></a><a class="cell" href="#s8" data-i="7" title="S-08"><span>08</span><i class="env"></i></a><a class="cell" href="#s9" data-i="8" title="S-09"><span>09</span><i class="env"></i></a><a class="cell" href="#s10" data-i="9" title="S-10"><span>10</span><i class="env"></i></a><a class="cell" href="#s11" data-i="10" title="S-11"><span>11</span><i class="env"></i></a><a class="cell" href="#s12" data-i="11" title="S-12"><span>12</span><i class="env"></i></a><a class="cell" href="#s13" data-i="12" title="S-13"><span>13</span><i class="env"></i></a><a class="cell" href="#s14" data-i="13" title="S-14"><span>14</span><i class="env"></i></a><a class="cell" href="#s15" data-i="14" title="S-15"><span>15</span><i class="env"></i></a><a class="cell" href="#s16" data-i="15" title="S-16"><span>16</span><i class="env"></i></a><a class="cell" href="#s17" data-i="16" title="S-17"><span>17</span><i class="env"></i></a><a class="cell" href="#s18" data-i="17" title="S-18"><span>18</span><i class="env"></i></a></nav>
   </div>
 </div>
