@@ -10,215 +10,192 @@
 <link href="https://fonts.googleapis.com/css2?family=Nanum+Myeongjo:wght@400;700;800&family=Noto+Sans+KR:wght@300;400;500;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
 :root{
-  --desk:#232830;
-  --desk-2:#1b1f26;
-  --sheet:#FBFAF7;
-  --ink:#181A1D;
-  --ink-soft:#5D6167;
-  --ink-faint:#8A8F96;
-  --rule:#DFDBD2;
-  --indigo:#26417A;
-  --indigo-w:#E7EBF4;
-  --ochre:#8E6410;
-  --ochre-w:#F5EEDD;
-  --line:1px solid var(--rule);
+  --desk:#232830; --desk-2:#1b1f26; --sheet:#FBFAF7;
+  --ink:#181A1D; --ink-soft:#5D6167; --ink-faint:#8A8F96; --rule:#DFDBD2;
+  --indigo:#26417A; --ochre:#8E6410; --line:1px solid var(--rule);
 }
 *{box-sizing:border-box}
-html{scroll-behavior:smooth;scroll-padding-top:110px}
-body{
-  margin:0;background:var(--desk);color:var(--ink);
+html{scroll-behavior:smooth;scroll-padding-top:112px}
+body{margin:0;background:var(--desk);color:var(--ink);
   font-family:"Noto Sans KR",-apple-system,"Apple SD Gothic Neo","Malgun Gothic",sans-serif;
-  font-weight:400;-webkit-font-smoothing:antialiased;
-}
+  -webkit-font-smoothing:antialiased}
 
-/* ---------- top bar ---------- */
-.bar{
-  position:sticky;top:0;z-index:50;background:rgba(27,31,38,.94);
-  backdrop-filter:blur(10px);border-bottom:1px solid rgba(255,255,255,.09);
-}
+/* ---------- bar ---------- */
+.bar{position:sticky;top:0;z-index:50;background:rgba(27,31,38,.94);
+  backdrop-filter:blur(10px);border-bottom:1px solid rgba(255,255,255,.09)}
 .bar-in{max-width:960px;margin:0 auto;padding:12px 20px 10px}
 .bar-top{display:flex;align-items:baseline;gap:14px;flex-wrap:wrap}
-.brand{
-  font-family:"Nanum Myeongjo",serif;font-weight:800;color:#F1EFEA;
-  font-size:17px;letter-spacing:-.01em;margin:0;
-}
-.brand small{
-  font-family:"IBM Plex Mono",monospace;font-weight:400;font-size:11px;
-  color:#9AA2AE;letter-spacing:.08em;margin-left:8px;text-transform:uppercase;
-}
-.count{
-  margin-left:auto;font-family:"IBM Plex Mono",monospace;font-size:12px;
-  color:#B9C0C9;letter-spacing:.04em;
-}
+.brand{font-family:"Nanum Myeongjo",serif;font-weight:800;color:#F1EFEA;font-size:17px;margin:0;letter-spacing:-.01em}
+.brand small{font-family:"IBM Plex Mono",monospace;font-weight:400;font-size:11px;color:#9AA2AE;letter-spacing:.08em;margin-left:8px;text-transform:uppercase}
+.count{margin-left:auto;font-family:"IBM Plex Mono",monospace;font-size:12px;color:#B9C0C9}
 .count b{color:#fff;font-weight:600}
-.go-share{
-  font-family:"Noto Sans KR",sans-serif;font-size:12px;color:#0F1216;background:#D6DBE2;
-  border:0;border-radius:2px;padding:6px 12px;cursor:pointer;font-weight:500;
-}
+.go-share{font-size:12px;color:#0F1216;background:#D6DBE2;border:0;border-radius:2px;padding:6px 12px;cursor:pointer;font-weight:500;font-family:inherit}
 .go-share:hover{background:#fff}
-
-/* signature: 18-cell judgement strip */
 .strip{display:flex;gap:3px;margin-top:10px;overflow-x:auto;padding-bottom:2px}
-.cell{
-  flex:1 1 0;min-width:30px;height:26px;border-radius:2px;
+.cell{flex:1 1 0;min-width:30px;height:26px;border-radius:2px;position:relative;
   background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.1);
   display:flex;align-items:center;justify-content:center;text-decoration:none;
-  font-family:"IBM Plex Mono",monospace;font-size:11px;color:#98A0AB;
-  transition:background .18s,color .18s,border-color .18s;
-}
+  font-family:"IBM Plex Mono",monospace;font-size:11px;color:#98A0AB;transition:.18s}
 .cell:hover{border-color:rgba(255,255,255,.45);color:#fff}
 .cell[data-v="1"]{background:#3A5EA8;border-color:#3A5EA8;color:#fff}
 .cell[data-v="2"]{background:#B58322;border-color:#B58322;color:#1a1206}
 .cell.here{outline:2px solid #fff;outline-offset:-2px}
+.cell .env{display:none}
+body.revealed .cell .env{display:block;position:absolute;top:2px;right:3px;
+  font-style:normal;font-size:8px;letter-spacing:0;opacity:.85}
 
-/* ---------- notice ---------- */
-.notice{
-  max-width:960px;margin:16px auto -8px;padding:11px 16px;background:#EEF1F6;
-  border-left:3px solid var(--indigo);font-size:13px;color:#2C3138;display:none;
-}
+.notice{max-width:960px;margin:16px auto -8px;padding:11px 16px;background:#EEF1F6;
+  border-left:3px solid var(--indigo);font-size:13px;color:#2C3138;display:none}
 .notice.on{display:block}
 
-/* ---------- sheets ---------- */
+/* ---------- intro ---------- */
 main{max-width:960px;margin:0 auto;padding:28px 20px 10px}
-.lede{
-  color:#C3C9D1;font-size:13.5px;line-height:1.85;margin:4px 0 26px;
-  border-left:2px solid rgba(255,255,255,.18);padding-left:14px;
-}
+.lede{color:#C3C9D1;font-size:13.5px;line-height:1.85;margin:4px 0 16px;
+  border-left:2px solid rgba(255,255,255,.18);padding-left:14px}
 .lede b{color:#fff;font-weight:500}
+.crits{display:flex;flex-wrap:wrap;gap:6px;margin:0 0 26px;padding-left:16px}
+.crits .lbl{font-family:"IBM Plex Mono",monospace;font-size:10.5px;letter-spacing:.12em;
+  color:#7E8692;text-transform:uppercase;align-self:center;margin-right:4px}
+.crit{font-size:12px;color:#AEB6C1;border:1px solid rgba(255,255,255,.16);
+  border-radius:2px;padding:4px 9px;white-space:nowrap}
 
-.sheet{
-  background:var(--sheet);margin:0 0 26px;padding:0 0 4px;
-  box-shadow:0 1px 0 rgba(0,0,0,.35),0 10px 26px rgba(0,0,0,.22);
-  position:relative;
-}
-.sheet-head{
-  display:flex;align-items:center;gap:12px;padding:14px 30px;
-  border-bottom:var(--line);position:relative;
-}
-.tag{
-  font-family:"IBM Plex Mono",monospace;font-weight:600;font-size:15px;
-  letter-spacing:.06em;color:var(--ink);
-  border:1px solid var(--ink);padding:3px 10px;border-radius:2px;
-}
-.meta{font-family:"IBM Plex Mono",monospace;font-size:11px;color:var(--ink-faint);letter-spacing:.03em}
-.stamp{
-  margin-left:auto;font-family:"IBM Plex Mono",monospace;font-size:12px;font-weight:600;
+/* ---------- sheets ---------- */
+.sheet{background:var(--sheet);margin:0 0 26px;padding:0 0 4px;position:relative;
+  box-shadow:0 1px 0 rgba(0,0,0,.35),0 10px 26px rgba(0,0,0,.22)}
+.sheet-head{display:flex;align-items:center;gap:10px;flex-wrap:wrap;padding:14px 30px;border-bottom:var(--line)}
+.tag{font-family:"IBM Plex Mono",monospace;font-weight:600;font-size:15px;letter-spacing:.06em;
+  border:1px solid var(--ink);padding:3px 10px;border-radius:2px}
+.meta{font-family:"IBM Plex Mono",monospace;font-size:11px;color:var(--ink-faint)}
+.key{display:inline-flex;align-items:center;gap:7px;font-size:12px}
+.key .envchip{font-family:"IBM Plex Mono",monospace;font-size:11px;font-weight:500;
+  padding:3px 9px;border-radius:2px;border:1px solid var(--ink);letter-spacing:.02em}
+.key .envchip.B{background:var(--ink);color:#FBFAF7}
+.key .envchip.J{background:transparent;color:var(--ink)}
+.key .src{font-family:"IBM Plex Mono",monospace;font-size:10.5px;color:var(--ink-faint)}
+.stamp{margin-left:auto;font-family:"IBM Plex Mono",monospace;font-size:12px;font-weight:600;
   letter-spacing:.1em;padding:5px 11px;border:1.5px solid currentColor;border-radius:2px;
-  transform:rotate(-4deg);opacity:0;transition:opacity .22s ease,transform .22s ease;
-}
-.sheet[data-v="1"] .stamp{opacity:1;color:var(--indigo);transform:rotate(-4deg) scale(1)}
-.sheet[data-v="2"] .stamp{opacity:1;color:var(--ochre);transform:rotate(-4deg) scale(1)}
+  transform:rotate(-4deg);opacity:0;transition:opacity .22s ease}
+.sheet[data-v="1"] .stamp{opacity:1;color:var(--indigo)}
+.sheet[data-v="2"] .stamp{opacity:1;color:var(--ochre)}
 .sheet[data-v="1"]{box-shadow:inset 4px 0 0 var(--indigo),0 10px 26px rgba(0,0,0,.22)}
 .sheet[data-v="2"]{box-shadow:inset 4px 0 0 var(--ochre),0 10px 26px rgba(0,0,0,.22)}
 
-/* document body */
 .doc{padding:26px 30px 30px;font-size:16px;line-height:2.0;color:#25282C;word-break:keep-all}
-.doc h1{
-  font-family:"Nanum Myeongjo",serif;font-size:24px;font-weight:800;line-height:1.4;
-  margin:6px 0 22px;padding-bottom:12px;border-bottom:2px solid var(--ink);letter-spacing:-.01em;
-}
-.doc h2{
-  font-family:"Nanum Myeongjo",serif;font-size:21px;font-weight:800;line-height:1.5;
-  margin:34px 0 16px;letter-spacing:-.01em;
-}
+.doc h1{font-family:"Nanum Myeongjo",serif;font-size:24px;font-weight:800;line-height:1.4;
+  margin:6px 0 22px;padding-bottom:12px;border-bottom:2px solid var(--ink)}
+.doc h2{font-family:"Nanum Myeongjo",serif;font-size:21px;font-weight:800;line-height:1.5;margin:34px 0 16px}
 .doc h2:first-child{margin-top:2px}
-.doc h3{
-  font-family:"Nanum Myeongjo",serif;font-size:17px;font-weight:700;color:#3A3F45;
-  margin:28px 0 12px;padding-left:12px;border-left:3px solid var(--rule);
-}
-.doc p{margin:0 0 17px}
-.doc p:last-child{margin-bottom:0}
-.doc strong{font-weight:700}
-.doc blockquote{margin:18px 0;padding:2px 0 2px 16px;border-left:3px solid var(--rule);color:var(--ink-soft)}
-.doc ul,.doc ol{margin:0 0 17px;padding-left:22px}
-.doc li{margin-bottom:7px}
+.doc h3{font-family:"Nanum Myeongjo",serif;font-size:17px;font-weight:700;color:#3A3F45;
+  margin:28px 0 12px;padding-left:12px;border-left:3px solid var(--rule)}
+.doc p{margin:0 0 17px} .doc p:last-child{margin-bottom:0}
+.doc blockquote{margin:18px 0;padding-left:16px;border-left:3px solid var(--rule);color:var(--ink-soft)}
+.doc ul,.doc ol{margin:0 0 17px;padding-left:22px} .doc li{margin-bottom:7px}
 .doc hr{border:0;border-top:var(--line);margin:26px 0}
 .doc code{font-family:"IBM Plex Mono",monospace;font-size:.9em;background:#F0EEE8;padding:1px 5px;border-radius:2px}
 .tw{overflow-x:auto;margin:20px 0 22px}
 .doc table{border-collapse:collapse;width:100%;font-size:14px;line-height:1.7}
-.doc th{
-  text-align:left;font-weight:500;font-size:12px;letter-spacing:.05em;color:var(--ink-soft);
-  border-bottom:1.5px solid var(--ink);padding:9px 12px 8px;white-space:nowrap;
-}
+.doc th{text-align:left;font-weight:500;font-size:12px;letter-spacing:.05em;color:var(--ink-soft);
+  border-bottom:1.5px solid var(--ink);padding:9px 12px 8px;white-space:nowrap}
 .doc td{border-bottom:var(--line);padding:11px 12px;vertical-align:top;word-break:keep-all}
 .doc tr:last-child td{border-bottom:0}
 
-/* judge row */
-.judge{
-  display:flex;align-items:center;gap:14px;flex-wrap:wrap;
-  margin:0 30px;padding:16px 0 18px;border-top:var(--line);
-}
-.jlabel{
-  font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.14em;
-  color:var(--ink-faint);text-transform:uppercase;
-}
+.judge{display:flex;align-items:center;gap:14px;flex-wrap:wrap;margin:0 30px;padding:16px 0 18px;border-top:var(--line)}
+.jlabel{font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.14em;color:var(--ink-faint);text-transform:uppercase}
 .btns{display:flex;gap:8px;flex-wrap:wrap}
-.opt{
-  font-family:"Noto Sans KR",sans-serif;font-size:14.5px;font-weight:500;color:#33383E;
-  background:#fff;border:1px solid #CFCAC0;border-radius:2px;padding:9px 20px;cursor:pointer;
-  display:inline-flex;align-items:center;gap:8px;transition:.14s;
-}
+.opt{font-family:inherit;font-size:14.5px;font-weight:500;color:#33383E;background:#fff;
+  border:1px solid #CFCAC0;border-radius:2px;padding:9px 20px;cursor:pointer;
+  display:inline-flex;align-items:center;gap:8px;transition:.14s}
 .opt b{font-family:"IBM Plex Mono",monospace;font-size:11px;font-weight:600;color:var(--ink-faint)}
 .opt:hover{border-color:#8E887C}
 .opt.easy[aria-pressed="true"]{background:var(--indigo);border-color:var(--indigo);color:#fff}
 .opt.hard[aria-pressed="true"]{background:var(--ochre);border-color:var(--ochre);color:#fff}
 .opt[aria-pressed="true"] b{color:rgba(255,255,255,.7)}
 .opt.clear{border-style:dashed;color:var(--ink-faint);padding:9px 14px;font-size:13px}
-.opt:focus-visible,.cell:focus-visible,.go-share:focus-visible,button:focus-visible{outline:2px solid #5B8DEF;outline-offset:2px}
+:focus-visible{outline:2px solid #5B8DEF;outline-offset:2px}
 
-/* ---------- share ---------- */
-.share{
-  max-width:960px;margin:34px auto 60px;padding:26px 30px 30px;
-  background:#EDEFF2;box-shadow:0 10px 26px rgba(0,0,0,.22);
-}
-.share h2{
-  font-family:"Nanum Myeongjo",serif;font-size:20px;font-weight:800;margin:0 0 4px;
-}
-.share .sub{font-size:13px;color:var(--ink-soft);margin:0 0 20px}
+/* ---------- panels ---------- */
+.panel{max-width:960px;margin:34px auto 0;padding:26px 30px 30px;background:#EDEFF2;
+  box-shadow:0 10px 26px rgba(0,0,0,.22)}
+.panel h2{font-family:"Nanum Myeongjo",serif;font-size:20px;font-weight:800;margin:0 0 4px}
+.panel .sub{font-size:13px;color:var(--ink-soft);margin:0 0 20px;line-height:1.7}
 .fld{margin-bottom:18px}
-.fld label{
-  display:block;font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.1em;
-  color:var(--ink-soft);text-transform:uppercase;margin-bottom:7px;
-}
+.fld label{display:block;font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.1em;
+  color:var(--ink-soft);text-transform:uppercase;margin-bottom:7px}
 .row{display:flex;gap:8px;align-items:stretch;flex-wrap:wrap}
-input.url,textarea.res{
-  flex:1 1 320px;min-width:0;font-family:"IBM Plex Mono",monospace;font-size:12.5px;
-  border:1px solid #C7CBD1;background:#fff;border-radius:2px;padding:11px 12px;color:#2A2E33;
-  line-height:1.75;resize:vertical;
-}
+input.url,textarea.res{flex:1 1 320px;min-width:0;font-family:"IBM Plex Mono",monospace;font-size:12.5px;
+  border:1px solid #C7CBD1;background:#fff;border-radius:2px;padding:11px 12px;color:#2A2E33;line-height:1.75;resize:vertical}
 textarea.res{font-family:"Noto Sans KR",sans-serif;font-size:13.5px;min-height:190px;width:100%;flex:none}
-.copy{
-  font-family:"Noto Sans KR",sans-serif;font-size:13px;font-weight:500;white-space:nowrap;
-  background:var(--ink);color:#fff;border:0;border-radius:2px;padding:11px 18px;cursor:pointer;
-}
-.copy:hover{background:#3A4048}
-.copy.done{background:var(--indigo)}
-.ghost{
-  background:transparent;color:var(--ink-soft);border:1px solid #C7CBD1;
-  font-family:"Noto Sans KR",sans-serif;font-size:12.5px;border-radius:2px;padding:8px 14px;cursor:pointer;
-}
+.copy{font-family:inherit;font-size:13px;font-weight:500;white-space:nowrap;background:var(--ink);
+  color:#fff;border:0;border-radius:2px;padding:11px 18px;cursor:pointer}
+.copy:hover{background:#3A4048} .copy.done{background:var(--indigo)}
+.ghost{background:transparent;color:var(--ink-soft);border:1px solid #C7CBD1;font-family:inherit;
+  font-size:12.5px;border-radius:2px;padding:8px 14px;cursor:pointer}
 .ghost:hover{border-color:#8E887C;color:var(--ink)}
 .tally{display:flex;gap:18px;flex-wrap:wrap;margin:0 0 20px;padding:14px 0;border-top:var(--line);border-bottom:var(--line)}
 .tally div{font-family:"IBM Plex Mono",monospace;font-size:12px;color:var(--ink-soft)}
 .tally b{font-size:20px;font-weight:600;color:var(--ink);margin-right:6px}
-.tally .i b{color:var(--indigo)}
-.tally .o b{color:var(--ochre)}
-.foot{max-width:960px;margin:0 auto;padding:0 20px 50px;color:#7C8593;font-size:12px;font-family:"IBM Plex Mono",monospace}
+.tally .i b{color:var(--indigo)} .tally .o b{color:var(--ochre)}
+
+/* ---------- answer key ---------- */
+.keybox{max-width:960px;margin:20px auto 0;padding:26px 30px 28px;background:#20252C;color:#D8DDE4;
+  border:1px dashed rgba(255,255,255,.28)}
+.keybox h2{font-family:"Nanum Myeongjo",serif;font-size:19px;font-weight:800;color:#fff;margin:0 0 6px}
+.keybox p{font-size:13px;color:#98A0AB;line-height:1.8;margin:0 0 18px}
+.reveal-btn{font-family:inherit;font-size:14px;font-weight:500;background:#EDEFF2;color:#181A1D;
+  border:0;border-radius:2px;padding:12px 24px;cursor:pointer}
+.reveal-btn:hover{background:#fff}
+.hash{font-family:"IBM Plex Mono",monospace;font-size:11px;color:#727B88;margin-top:14px}
+#board{display:none} body.revealed #board{display:block}
+body.revealed #lock{display:none}
+
+.score{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px;margin:0 0 26px}
+.envcard{background:#EDEFF2;color:var(--ink);padding:16px 18px;border-radius:2px}
+.envcard .nm{display:flex;align-items:center;gap:8px;font-family:"IBM Plex Mono",monospace;
+  font-size:11.5px;font-weight:500;margin-bottom:12px}
+.envcard .dot{width:11px;height:11px;border:1.5px solid var(--ink);border-radius:2px;flex:none}
+.envcard .dot.B{background:var(--ink)}
+.bars{display:flex;height:30px;border-radius:2px;overflow:hidden;background:#D5D9DF;margin-bottom:9px}
+.bars i{display:block;font-style:normal;font-family:"IBM Plex Mono",monospace;font-size:11px;
+  color:#fff;display:flex;align-items:center;justify-content:center;transition:width .5s ease}
+.bars .e{background:var(--indigo)} .bars .h{background:var(--ochre)}
+.envcard .ln{font-family:"IBM Plex Mono",monospace;font-size:11.5px;color:var(--ink-soft)}
+
+.matrix{margin:0 0 24px}
+.mgrid{width:100%;border-collapse:collapse;font-size:12px}
+.mgrid th{font-family:"IBM Plex Mono",monospace;font-size:10.5px;letter-spacing:.1em;
+  color:#98A0AB;text-transform:uppercase;font-weight:400;padding:0 0 8px;text-align:center}
+.mgrid th.rh{text-align:left;width:34%}
+.mgrid td{padding:3px;text-align:center}
+.mgrid td.rh{text-align:left;font-family:"IBM Plex Mono",monospace;font-size:11px;
+  color:#C3C9D1;padding-right:12px;white-space:nowrap}
+.mgrid td.rh .e2{color:#8A93A0;font-size:10px;display:block;margin-top:2px}
+.mcell{display:block;text-decoration:none;border-radius:2px;padding:9px 4px;
+  font-family:"IBM Plex Mono",monospace;font-size:11px;line-height:1.5;
+  background:rgba(255,255,255,.07);color:#98A0AB;border:1px solid transparent;transition:.15s}
+.mcell:hover{border-color:rgba(255,255,255,.5)}
+.mcell[data-v="1"]{background:#3A5EA8;color:#fff}
+.mcell[data-v="2"]{background:#B58322;color:#1a1206}
+.mcell u{display:block;text-decoration:none;font-size:10px;opacity:.85;margin-top:2px}
+.chgroup{margin-bottom:20px}
+.chgroup > h3{font-family:"Nanum Myeongjo",serif;font-size:15px;font-weight:700;color:#fff;
+  margin:0 0 10px;padding-bottom:7px;border-bottom:1px solid rgba(255,255,255,.14)}
+.split{font-size:13px;line-height:1.9;color:#C3C9D1;margin:0 0 24px;
+  border-left:2px solid rgba(255,255,255,.2);padding-left:14px}
+.split b{color:#fff;font-weight:500}
+.split .none{color:#8A93A0}
+
+.foot{max-width:960px;margin:0 auto;padding:34px 20px 50px;color:#7C8593;font-size:12px;font-family:"IBM Plex Mono",monospace}
 
 @media (max-width:640px){
   main{padding:20px 12px 6px}
-  .sheet-head{padding:12px 18px;flex-wrap:wrap}
-  .doc{padding:20px 18px 24px;font-size:15.5px;line-height:1.95}
-  .judge{margin:0 18px}
-  .share{padding:22px 18px 26px;margin-left:12px;margin-right:12px}
-  .stamp{margin-left:0}
-  .opt{flex:1 1 auto;justify-content:center}
-  .cell{min-width:34px}
+  .sheet-head{padding:12px 18px} .doc{padding:20px 18px 24px;font-size:15.5px;line-height:1.95}
+  .judge{margin:0 18px} .opt{flex:1 1 auto;justify-content:center}
+  .panel,.keybox{padding:22px 18px 26px;margin-left:12px;margin-right:12px}
+  .stamp{margin-left:0} .cell{min-width:34px}
+  .mgrid td.rh,.mgrid th.rh{width:auto;font-size:10px}
+  .mcell{padding:7px 2px;font-size:10px}
 }
-@media (prefers-reduced-motion:reduce){
-  html{scroll-behavior:auto}
-  *{transition:none!important}
-}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto} *{transition:none!important}}
 </style>
 </head>
 <body>
@@ -228,9 +205,9 @@ textarea.res{font-family:"Noto Sans KR",sans-serif;font-size:13.5px;min-height:1
     <div class="bar-top">
       <h1 class="brand">사주풀이지 블라인드 테스트<small>blind samples</small></h1>
       <span class="count"><b id="done">0</b> / 18 판정</span>
-      <button class="go-share" id="jumpShare" type="button">공유하기</button>
+      <button class="go-share" id="jumpShare" type="button">공유·채점</button>
     </div>
-    <nav class="strip" id="strip" aria-label="샘플 바로가기"><a class="cell" href="#s1" data-i="0" title="S-01"><span>01</span></a><a class="cell" href="#s2" data-i="1" title="S-02"><span>02</span></a><a class="cell" href="#s3" data-i="2" title="S-03"><span>03</span></a><a class="cell" href="#s4" data-i="3" title="S-04"><span>04</span></a><a class="cell" href="#s5" data-i="4" title="S-05"><span>05</span></a><a class="cell" href="#s6" data-i="5" title="S-06"><span>06</span></a><a class="cell" href="#s7" data-i="6" title="S-07"><span>07</span></a><a class="cell" href="#s8" data-i="7" title="S-08"><span>08</span></a><a class="cell" href="#s9" data-i="8" title="S-09"><span>09</span></a><a class="cell" href="#s10" data-i="9" title="S-10"><span>10</span></a><a class="cell" href="#s11" data-i="10" title="S-11"><span>11</span></a><a class="cell" href="#s12" data-i="11" title="S-12"><span>12</span></a><a class="cell" href="#s13" data-i="12" title="S-13"><span>13</span></a><a class="cell" href="#s14" data-i="13" title="S-14"><span>14</span></a><a class="cell" href="#s15" data-i="14" title="S-15"><span>15</span></a><a class="cell" href="#s16" data-i="15" title="S-16"><span>16</span></a><a class="cell" href="#s17" data-i="16" title="S-17"><span>17</span></a><a class="cell" href="#s18" data-i="17" title="S-18"><span>18</span></a></nav>
+    <nav class="strip" id="strip" aria-label="샘플 바로가기"><a class="cell" href="#s1" data-i="0" title="S-01"><span>01</span><i class="env"></i></a><a class="cell" href="#s2" data-i="1" title="S-02"><span>02</span><i class="env"></i></a><a class="cell" href="#s3" data-i="2" title="S-03"><span>03</span><i class="env"></i></a><a class="cell" href="#s4" data-i="3" title="S-04"><span>04</span><i class="env"></i></a><a class="cell" href="#s5" data-i="4" title="S-05"><span>05</span><i class="env"></i></a><a class="cell" href="#s6" data-i="5" title="S-06"><span>06</span><i class="env"></i></a><a class="cell" href="#s7" data-i="6" title="S-07"><span>07</span><i class="env"></i></a><a class="cell" href="#s8" data-i="7" title="S-08"><span>08</span><i class="env"></i></a><a class="cell" href="#s9" data-i="8" title="S-09"><span>09</span><i class="env"></i></a><a class="cell" href="#s10" data-i="9" title="S-10"><span>10</span><i class="env"></i></a><a class="cell" href="#s11" data-i="10" title="S-11"><span>11</span><i class="env"></i></a><a class="cell" href="#s12" data-i="11" title="S-12"><span>12</span><i class="env"></i></a><a class="cell" href="#s13" data-i="12" title="S-13"><span>13</span><i class="env"></i></a><a class="cell" href="#s14" data-i="13" title="S-14"><span>14</span><i class="env"></i></a><a class="cell" href="#s15" data-i="14" title="S-15"><span>15</span><i class="env"></i></a><a class="cell" href="#s16" data-i="15" title="S-16"><span>16</span><i class="env"></i></a><a class="cell" href="#s17" data-i="16" title="S-17"><span>17</span><i class="env"></i></a><a class="cell" href="#s18" data-i="17" title="S-18"><span>18</span><i class="env"></i></a></nav>
   </div>
 </div>
 
@@ -239,13 +216,16 @@ textarea.res{font-family:"Noto Sans KR",sans-serif;font-size:13.5px;min-height:1
 <main>
   <p class="lede">
     아래 <b>18개</b>의 풀이지를 순서대로 읽고 각 문서 하단에서 <b>쉽다</b> 또는 <b>어렵다</b>를 고르세요.
-    선택은 즉시 주소창에 저장되므로 <b>지금 보고 있는 URL을 그대로 복사해 공유</b>하면 상대에게 같은 결과가 열립니다.
+    선택은 즉시 주소창에 저장되므로 <b>지금 보고 있는 URL을 복사해 공유</b>하면 상대에게 같은 결과가 열립니다.
+    18개를 모두 판정한 뒤 맨 아래에서 <b>정답(환경 매핑)</b>을 열람할 수 있습니다.
   </p>
+  <div class="crits"><span class="lbl">평가 기준</span><span class="crit">한 번에 이해됨</span><span class="crit">명리 지식 없이 이해 가능</span><span class="crit">한 문장에 판단 하나</span><span class="crit">결론 선행</span><span class="crit">용어의 현실어 번역</span><span class="crit">비유 과도하지 않음</span><span class="crit">행동 지침 구체적</span></div>
   
 <article class="sheet" id="s1" data-i="0">
   <header class="sheet-head">
     <span class="tag">S-01</span>
     <span class="meta">1 / 18 · 910자</span>
+    <span class="key" hidden></span>
     <span class="stamp" aria-hidden="true"></span>
   </header>
   <div class="doc">
@@ -276,6 +256,7 @@ textarea.res{font-family:"Noto Sans KR",sans-serif;font-size:13.5px;min-height:1
   <header class="sheet-head">
     <span class="tag">S-02</span>
     <span class="meta">2 / 18 · 958자</span>
+    <span class="key" hidden></span>
     <span class="stamp" aria-hidden="true"></span>
   </header>
   <div class="doc">
@@ -304,6 +285,7 @@ textarea.res{font-family:"Noto Sans KR",sans-serif;font-size:13.5px;min-height:1
   <header class="sheet-head">
     <span class="tag">S-03</span>
     <span class="meta">3 / 18 · 1350자</span>
+    <span class="key" hidden></span>
     <span class="stamp" aria-hidden="true"></span>
   </header>
   <div class="doc">
@@ -341,6 +323,7 @@ textarea.res{font-family:"Noto Sans KR",sans-serif;font-size:13.5px;min-height:1
   <header class="sheet-head">
     <span class="tag">S-04</span>
     <span class="meta">4 / 18 · 1305자</span>
+    <span class="key" hidden></span>
     <span class="stamp" aria-hidden="true"></span>
   </header>
   <div class="doc">
@@ -378,6 +361,7 @@ textarea.res{font-family:"Noto Sans KR",sans-serif;font-size:13.5px;min-height:1
   <header class="sheet-head">
     <span class="tag">S-05</span>
     <span class="meta">5 / 18 · 1440자</span>
+    <span class="key" hidden></span>
     <span class="stamp" aria-hidden="true"></span>
   </header>
   <div class="doc">
@@ -411,6 +395,7 @@ textarea.res{font-family:"Noto Sans KR",sans-serif;font-size:13.5px;min-height:1
   <header class="sheet-head">
     <span class="tag">S-06</span>
     <span class="meta">6 / 18 · 1346자</span>
+    <span class="key" hidden></span>
     <span class="stamp" aria-hidden="true"></span>
   </header>
   <div class="doc">
@@ -448,6 +433,7 @@ textarea.res{font-family:"Noto Sans KR",sans-serif;font-size:13.5px;min-height:1
   <header class="sheet-head">
     <span class="tag">S-07</span>
     <span class="meta">7 / 18 · 1047자</span>
+    <span class="key" hidden></span>
     <span class="stamp" aria-hidden="true"></span>
   </header>
   <div class="doc">
@@ -478,6 +464,7 @@ textarea.res{font-family:"Noto Sans KR",sans-serif;font-size:13.5px;min-height:1
   <header class="sheet-head">
     <span class="tag">S-08</span>
     <span class="meta">8 / 18 · 1387자</span>
+    <span class="key" hidden></span>
     <span class="stamp" aria-hidden="true"></span>
   </header>
   <div class="doc">
@@ -512,6 +499,7 @@ textarea.res{font-family:"Noto Sans KR",sans-serif;font-size:13.5px;min-height:1
   <header class="sheet-head">
     <span class="tag">S-09</span>
     <span class="meta">9 / 18 · 1336자</span>
+    <span class="key" hidden></span>
     <span class="stamp" aria-hidden="true"></span>
   </header>
   <div class="doc">
@@ -546,6 +534,7 @@ textarea.res{font-family:"Noto Sans KR",sans-serif;font-size:13.5px;min-height:1
   <header class="sheet-head">
     <span class="tag">S-10</span>
     <span class="meta">10 / 18 · 1213자</span>
+    <span class="key" hidden></span>
     <span class="stamp" aria-hidden="true"></span>
   </header>
   <div class="doc">
@@ -580,6 +569,7 @@ textarea.res{font-family:"Noto Sans KR",sans-serif;font-size:13.5px;min-height:1
   <header class="sheet-head">
     <span class="tag">S-11</span>
     <span class="meta">11 / 18 · 928자</span>
+    <span class="key" hidden></span>
     <span class="stamp" aria-hidden="true"></span>
   </header>
   <div class="doc">
@@ -608,6 +598,7 @@ textarea.res{font-family:"Noto Sans KR",sans-serif;font-size:13.5px;min-height:1
   <header class="sheet-head">
     <span class="tag">S-12</span>
     <span class="meta">12 / 18 · 1515자</span>
+    <span class="key" hidden></span>
     <span class="stamp" aria-hidden="true"></span>
   </header>
   <div class="doc">
@@ -641,6 +632,7 @@ textarea.res{font-family:"Noto Sans KR",sans-serif;font-size:13.5px;min-height:1
   <header class="sheet-head">
     <span class="tag">S-13</span>
     <span class="meta">13 / 18 · 1052자</span>
+    <span class="key" hidden></span>
     <span class="stamp" aria-hidden="true"></span>
   </header>
   <div class="doc">
@@ -672,6 +664,7 @@ textarea.res{font-family:"Noto Sans KR",sans-serif;font-size:13.5px;min-height:1
   <header class="sheet-head">
     <span class="tag">S-14</span>
     <span class="meta">14 / 18 · 1381자</span>
+    <span class="key" hidden></span>
     <span class="stamp" aria-hidden="true"></span>
   </header>
   <div class="doc">
@@ -705,6 +698,7 @@ textarea.res{font-family:"Noto Sans KR",sans-serif;font-size:13.5px;min-height:1
   <header class="sheet-head">
     <span class="tag">S-15</span>
     <span class="meta">15 / 18 · 1031자</span>
+    <span class="key" hidden></span>
     <span class="stamp" aria-hidden="true"></span>
   </header>
   <div class="doc">
@@ -735,6 +729,7 @@ textarea.res{font-family:"Noto Sans KR",sans-serif;font-size:13.5px;min-height:1
   <header class="sheet-head">
     <span class="tag">S-16</span>
     <span class="meta">16 / 18 · 1317자</span>
+    <span class="key" hidden></span>
     <span class="stamp" aria-hidden="true"></span>
   </header>
   <div class="doc">
@@ -768,6 +763,7 @@ textarea.res{font-family:"Noto Sans KR",sans-serif;font-size:13.5px;min-height:1
   <header class="sheet-head">
     <span class="tag">S-17</span>
     <span class="meta">17 / 18 · 1319자</span>
+    <span class="key" hidden></span>
     <span class="stamp" aria-hidden="true"></span>
   </header>
   <div class="doc">
@@ -801,6 +797,7 @@ textarea.res{font-family:"Noto Sans KR",sans-serif;font-size:13.5px;min-height:1
   <header class="sheet-head">
     <span class="tag">S-18</span>
     <span class="meta">18 / 18 · 1473자</span>
+    <span class="key" hidden></span>
     <span class="stamp" aria-hidden="true"></span>
   </header>
   <div class="doc">
@@ -832,16 +829,14 @@ textarea.res{font-family:"Noto Sans KR",sans-serif;font-size:13.5px;min-height:1
 </article>
 </main>
 
-<section class="share" id="share">
+<section class="panel" id="share">
   <h2>결과 공유</h2>
   <p class="sub">아직 판정하지 않은 항목은 <em>미판정</em>으로 표시됩니다.</p>
-
   <div class="tally">
     <div class="i"><b id="tEasy">0</b>쉽다</div>
     <div class="o"><b id="tHard">0</b>어렵다</div>
     <div><b id="tNone">18</b>미판정</div>
   </div>
-
   <div class="fld">
     <label for="url">공유 링크</label>
     <div class="row">
@@ -849,16 +844,14 @@ textarea.res{font-family:"Noto Sans KR",sans-serif;font-size:13.5px;min-height:1
       <button class="copy" id="copyUrl" type="button">링크 복사</button>
     </div>
   </div>
-
   <div class="fld">
-    <label for="code">결과 코드 <span style="text-transform:none;letter-spacing:0">(링크가 안 될 때 이 코드만 전달해도 됩니다)</span></label>
+    <label for="code">결과 코드 <span style="text-transform:none;letter-spacing:0">(링크가 안 열릴 때 이 코드만 전달해도 됩니다)</span></label>
     <div class="row">
       <input class="url" id="code" readonly value="">
       <button class="copy" id="copyCode" type="button">코드 복사</button>
       <button class="ghost" id="applyCode" type="button">코드 불러오기</button>
     </div>
   </div>
-
   <div class="fld">
     <label for="res">결과 텍스트</label>
     <textarea class="res" id="res" readonly></textarea>
@@ -869,32 +862,68 @@ textarea.res{font-family:"Noto Sans KR",sans-serif;font-size:13.5px;min-height:1
   </div>
 </section>
 
+<section class="keybox" id="answer">
+  <div id="lock">
+    <h2>정답 확인 — 환경 매핑</h2>
+    <p>각 라벨이 <b>봉호님(TypeScript)</b>과 <b>재민님(Python)</b> 중 어느 쪽에서 나왔는지, 어떤 챕터의 몇 번째 리비전인지 공개합니다.<br>
+       한 번 열면 이 페이지에서는 다시 가릴 수 없으니 18개를 모두 판정한 뒤 누르세요.</p>
+    <button class="reveal-btn" id="revealBtn" type="button">정답 열람하기</button>
+    <div class="hash">integrity 9b65fb96f9e05d0c · 제공된 정답 순서 확인용</div>
+  </div>
+
+  <div id="board">
+    <h2>채점 결과</h2>
+    <p>같은 원고를 두 환경이 각각 생성했습니다. 챕터 3종 × 리비전 3종 × 환경 2종 = 18개, 환경별 9개씩 균형 설계입니다.</p>
+    <div class="score" id="score"></div>
+    <div class="matrix" id="matrix"></div>
+    <div class="split" id="split"></div>
+    <div class="fld">
+      <label for="res2">정답 포함 결과 텍스트</label>
+      <textarea class="res" id="res2" readonly style="background:#171B21;color:#D8DDE4;border-color:rgba(255,255,255,.2);min-height:230px"></textarea>
+      <div class="row" style="margin-top:8px">
+        <button class="copy" id="copyRes2" type="button" style="background:#EDEFF2;color:#181A1D">텍스트 복사</button>
+      </div>
+    </div>
+    <div class="hash">integrity 9b65fb96f9e05d0c</div>
+  </div>
+</section>
+
 <p class="foot">blind-test · 18 samples · 1=쉽다 / 2=어렵다 / 0=미판정</p>
 
 <script>
 (function(){
   var LABELS = ["S-01", "S-02", "S-03", "S-04", "S-05", "S-06", "S-07", "S-08", "S-09", "S-10", "S-11", "S-12", "S-13", "S-14", "S-15", "S-16", "S-17", "S-18"];
+  var KEY    = [{"env": "B", "ch": "4장_챕터2_역전의해", "rev": "r3", "file": "박봉호_4장_챕터2_역전의해_r3.md"}, {"env": "B", "ch": "4장_챕터2_역전의해", "rev": "r2", "file": "박봉호_4장_챕터2_역전의해_r2.md"}, {"env": "J", "ch": "2장_챕터1_돈그릇", "rev": "r2", "file": "박봉호_2장_챕터1_돈그릇_r2.md"}, {"env": "J", "ch": "2장_챕터1_돈그릇", "rev": "r3", "file": "박봉호_2장_챕터1_돈그릇_r3.md"}, {"env": "B", "ch": "1장_챕터2_발밑이유", "rev": "r2", "file": "박봉호_1장_챕터2_발밑이유_r2.md"}, {"env": "J", "ch": "2장_챕터1_돈그릇", "rev": "r1", "file": "박봉호_2장_챕터1_돈그릇_r1.md"}, {"env": "J", "ch": "4장_챕터2_역전의해", "rev": "r2", "file": "박봉호_4장_챕터2_역전의해_r2.md"}, {"env": "B", "ch": "2장_챕터1_돈그릇", "rev": "r2", "file": "박봉호_2장_챕터1_돈그릇_r2.md"}, {"env": "B", "ch": "2장_챕터1_돈그릇", "rev": "r3", "file": "박봉호_2장_챕터1_돈그릇_r3.md"}, {"env": "B", "ch": "2장_챕터1_돈그릇", "rev": "r1", "file": "박봉호_2장_챕터1_돈그릇_r1.md"}, {"env": "B", "ch": "4장_챕터2_역전의해", "rev": "r1", "file": "박봉호_4장_챕터2_역전의해_r1.md"}, {"env": "J", "ch": "1장_챕터2_발밑이유", "rev": "r2", "file": "박봉호_1장_챕터2_발밑이유_r2.md"}, {"env": "J", "ch": "4장_챕터2_역전의해", "rev": "r1", "file": "박봉호_4장_챕터2_역전의해_r1.md"}, {"env": "J", "ch": "1장_챕터2_발밑이유", "rev": "r1", "file": "박봉호_1장_챕터2_발밑이유_r1.md"}, {"env": "J", "ch": "4장_챕터2_역전의해", "rev": "r3", "file": "박봉호_4장_챕터2_역전의해_r3.md"}, {"env": "J", "ch": "1장_챕터2_발밑이유", "rev": "r3", "file": "박봉호_1장_챕터2_발밑이유_r3.md"}, {"env": "B", "ch": "1장_챕터2_발밑이유", "rev": "r3", "file": "박봉호_1장_챕터2_발밑이유_r3.md"}, {"env": "B", "ch": "1장_챕터2_발밑이유", "rev": "r1", "file": "박봉호_1장_챕터2_발밑이유_r1.md"}];
+  var ENV    = {"B": "봉호님 · TypeScript", "J": "재민님 · Python"};
+  var CHN    = {"1장_챕터2_발밑이유": "1장 챕터2 · 발밑 이유", "2장_챕터1_돈그릇": "2장 챕터1 · 돈 그릇", "4장_챕터2_역전의해": "4장 챕터2 · 역전의 해"};
+  var CHORD  = ["1장_챕터2_발밑이유", "2장_챕터1_돈그릇", "4장_챕터2_역전의해"];
+  var REVS   = ["r1","r2","r3"];
   var N = LABELS.length;
   var NAME = {"1":"쉽다","2":"어렵다","0":"미판정"};
   var ans = new Array(N).fill(0);
+  var revealed = false;
 
-  var sheets = Array.prototype.slice.call(document.querySelectorAll('.sheet'));
-  var cells  = Array.prototype.slice.call(document.querySelectorAll('.cell'));
+  var sheets = [].slice.call(document.querySelectorAll('.sheet'));
+  var cells  = [].slice.call(document.querySelectorAll('.cell'));
 
-  function readHash(){
-    var m = (location.hash||'').match(/a=([0-2]+)/);
-    if(!m) return false;
-    var s = m[1];
-    for(var i=0;i<N;i++) ans[i] = (i<s.length) ? (parseInt(s[i],10)||0) : 0;
-    return true;
+  function scrollTo_(id){
+    var el = document.getElementById(id);
+    if(el && el.scrollIntoView) try{ el.scrollIntoView({behavior:'smooth', block:'start'}); }catch(e){ el.scrollIntoView(); }
   }
   function code(){ return ans.join(''); }
-  function shareUrl(){
-    var base = location.href.split('#')[0];
-    return base + '#a=' + code();
-  }
+  function shareUrl(){ return location.href.split('#')[0] + '#a=' + code(); }
   function summary(){
     return LABELS.map(function(l,i){ return l + ' - ' + NAME[String(ans[i])]; }).join('\n');
+  }
+  function summaryFull(){
+    return LABELS.map(function(l,i){
+      var k = KEY[i];
+      return l + ' - ' + NAME[String(ans[i])] + '  |  ' + ENV[k.env] + '  |  ' + CHN[k.ch] + ' ' + k.rev;
+    }).join('\n');
+  }
+  function idxOf(ch, rev, env){
+    for(var i=0;i<N;i++) if(KEY[i].ch===ch && KEY[i].rev===rev && KEY[i].env===env) return i;
+    return -1;
   }
 
   function paint(){
@@ -902,31 +931,115 @@ textarea.res{font-family:"Noto Sans KR",sans-serif;font-size:13.5px;min-height:1
     for(var i=0;i<N;i++){
       var v = ans[i];
       if(v===1) e++; else if(v===2) h++;
-
       var sh = sheets[i];
       if(v) sh.setAttribute('data-v', String(v)); else sh.removeAttribute('data-v');
-      var st = sh.querySelector('.stamp');
-      st.textContent = v ? NAME[String(v)] : '';
-
+      sh.querySelector('.stamp').textContent = v ? NAME[String(v)] : '';
       sh.querySelectorAll('.opt').forEach(function(b){
         var bv = parseInt(b.getAttribute('data-v'),10);
         if(bv) b.setAttribute('aria-pressed', bv===v ? 'true':'false');
       });
-
       if(v) cells[i].setAttribute('data-v', String(v)); else cells[i].removeAttribute('data-v');
     }
-    document.getElementById('done').textContent = String(e+h);
+    document.getElementById('done').textContent  = String(e+h);
     document.getElementById('tEasy').textContent = String(e);
     document.getElementById('tHard').textContent = String(h);
     document.getElementById('tNone').textContent = String(N-e-h);
     document.getElementById('url').value  = shareUrl();
     document.getElementById('code').value = code();
     document.getElementById('res').value  = summary();
-
-    try{ history.replaceState(null,'','#a='+code()); }
-    catch(err){ }
+    try{ history.replaceState(null,'','#a='+code()); }catch(err){}
+    if(revealed) drawBoard();
   }
 
+  /* ---------- board ---------- */
+  function drawBoard(){
+    document.getElementById('res2').value = summaryFull();
+
+    // per-environment tally
+    var sc = '';
+    ['B','J'].forEach(function(env){
+      var e=0,h=0,n=0,tot=0;
+      for(var i=0;i<N;i++) if(KEY[i].env===env){
+        tot++;
+        if(ans[i]===1) e++; else if(ans[i]===2) h++; else n++;
+      }
+      var judged = e+h;
+      var pe = judged ? Math.round(e/judged*100) : 0;
+      sc += '<div class="envcard">'
+         +   '<div class="nm"><span class="dot '+env+'"></span>'+ENV[env]+'</div>'
+         +   '<div class="bars">'
+         +     (e? '<i class="e" style="width:'+(e/tot*100)+'%">'+e+'</i>':'')
+         +     (h? '<i class="h" style="width:'+(h/tot*100)+'%">'+h+'</i>':'')
+         +   '</div>'
+         +   '<div class="ln">쉽다 '+e+' · 어렵다 '+h+(n?' · 미판정 '+n:'')
+         +     (judged? ' &nbsp;→&nbsp; 쉽다 비율 '+pe+'%':'')+'</div>'
+         + '</div>';
+    });
+    document.getElementById('score').innerHTML = sc;
+
+    // chapter x revision matrix
+    var mx = '';
+    CHORD.forEach(function(ch){
+      mx += '<div class="chgroup"><h3>'+CHN[ch]+'</h3><table class="mgrid"><thead><tr><th class="rh"></th>'
+          + REVS.map(function(r){ return '<th>'+r+'</th>'; }).join('') + '</tr></thead><tbody>';
+      ['B','J'].forEach(function(env){
+        mx += '<tr><td class="rh">'+ENV[env].split(' · ')[0]+'<span class="e2">'+ENV[env].split(' · ')[1]+'</span></td>';
+        REVS.forEach(function(r){
+          var i = idxOf(ch,r,env);
+          var v = ans[i];
+          mx += '<td><a class="mcell" href="#s'+(i+1)+'"'+(v?' data-v="'+v+'"':'')+'>'
+              + LABELS[i] + '<u>' + NAME[String(v)] + '</u></a></td>';
+        });
+        mx += '</tr>';
+      });
+      mx += '</tbody></table></div>';
+    });
+    document.getElementById('matrix').innerHTML = mx;
+
+    // where the two environments disagreed
+    var same=0, diff=[], skip=0;
+    CHORD.forEach(function(ch){
+      REVS.forEach(function(r){
+        var b = ans[idxOf(ch,r,'B')], j = ans[idxOf(ch,r,'J')];
+        if(!b || !j){ skip++; return; }
+        if(b===j) same++;
+        else diff.push(CHN[ch]+' '+r+' — 봉호님 <b>'+NAME[String(b)]+'</b> / 재민님 <b>'+NAME[String(j)]+'</b>');
+      });
+    });
+    var sp = '';
+    if(same+diff.length === 0){
+      sp = '<span class="none">짝을 이루는 판정이 아직 없습니다. 두 환경의 같은 챕터·리비전을 모두 판정하면 비교가 나타납니다.</span>';
+    } else {
+      sp = '<b>같은 원고 9쌍 중 '+(same+diff.length)+'쌍 비교 가능</b> — 판정 일치 '+same+'쌍, 엇갈림 '+diff.length+'쌍'
+         + (skip? ' (미판정으로 제외 '+skip+'쌍)':'') + '<br>'
+         + (diff.length ? diff.map(function(d){ return '· '+d; }).join('<br>')
+                        : '<span class="none">· 엇갈린 쌍 없음 — 두 환경의 판정이 모두 같습니다.</span>');
+    }
+    document.getElementById('split').innerHTML = sp;
+  }
+
+  function reveal(){
+    revealed = true;
+    document.body.classList.add('revealed');
+    for(var i=0;i<N;i++){
+      var k = KEY[i], el = sheets[i].querySelector('.key');
+      el.hidden = false;
+      el.innerHTML = '<span class="envchip '+k.env+'">'+ENV[k.env]+'</span>'
+                   + '<span class="src">'+CHN[k.ch]+' · '+k.rev+' · '+k.file+'</span>';
+      cells[i].querySelector('.env').textContent = (k.env==='B' ? 'T' : 'P');
+      cells[i].title = LABELS[i] + ' · ' + ENV[k.env];
+    }
+    drawBoard();
+    scrollTo_('board');
+  }
+
+  document.getElementById('revealBtn').onclick = function(){
+    var left = ans.filter(function(v){return v===0;}).length;
+    if(left && !confirm('아직 '+left+'개가 미판정입니다.\n지금 정답을 열면 남은 문서를 편견 없이 볼 수 없습니다.\n\n그래도 열람할까요?')) return;
+    reveal();
+  };
+
+  /* ---------- interactions ---------- */
   document.addEventListener('click', function(ev){
     var b = ev.target.closest ? ev.target.closest('.opt') : null;
     if(!b) return;
@@ -945,53 +1058,44 @@ textarea.res{font-family:"Noto Sans KR",sans-serif;font-size:13.5px;min-height:1
     var ok = false;
     try{
       var ta = document.createElement('textarea');
-      ta.value = text;
-      ta.style.cssText = 'position:fixed;top:0;left:0;opacity:0';
+      ta.value = text; ta.style.cssText = 'position:fixed;top:0;left:0;opacity:0';
       document.body.appendChild(ta); ta.select();
-      ok = document.execCommand('copy');
-      document.body.removeChild(ta);
+      ok = document.execCommand('copy'); document.body.removeChild(ta);
     }catch(e){ ok = false; }
     if(ok){ flash(btn,'복사됨'); return; }
-    if(navigator.clipboard){
-      navigator.clipboard.writeText(text).then(function(){ flash(btn,'복사됨'); },
-        function(){ flash(btn,'직접 선택해 복사'); });
-    } else { flash(btn,'직접 선택해 복사'); }
+    if(navigator.clipboard) navigator.clipboard.writeText(text).then(
+      function(){ flash(btn,'복사됨'); }, function(){ flash(btn,'직접 선택해 복사'); });
+    else flash(btn,'직접 선택해 복사');
   }
-
   document.getElementById('copyUrl').onclick  = function(){ copy(shareUrl(), this); };
   document.getElementById('copyCode').onclick = function(){ copy(code(), this); };
   document.getElementById('copyRes').onclick  = function(){ copy(summary(), this); };
+  document.getElementById('copyRes2').onclick = function(){ copy(summaryFull(), this); };
 
   document.getElementById('applyCode').onclick = function(){
     var v = prompt('전달받은 결과 코드를 붙여넣으세요 (' + N + '자리 숫자)');
     if(!v) return;
     v = v.replace(/[^0-2]/g,'');
-    if(!v){ alert('코드에 0·1·2 외의 값만 있습니다. 다시 확인해 주세요.'); return; }
+    if(!v){ alert('0·1·2로 된 코드가 아닙니다. 다시 확인해 주세요.'); return; }
     for(var i=0;i<N;i++) ans[i] = (i<v.length) ? (parseInt(v[i],10)||0) : 0;
     paint();
   };
-
   document.getElementById('reset').onclick = function(){
     if(!confirm('모든 판정을 지웁니다. 계속할까요?')) return;
     ans = new Array(N).fill(0); paint();
   };
-
-  document.getElementById('jumpShare').onclick = function(){
-    document.getElementById('share').scrollIntoView({behavior:'smooth', block:'start'});
-  };
-
-  ['url','code','res'].forEach(function(id){
+  document.getElementById('jumpShare').onclick = function(){ scrollTo_('share'); };
+  ['url','code','res','res2'].forEach(function(id){
     var el = document.getElementById(id);
     el.addEventListener('focus', function(){ el.select(); });
     el.addEventListener('click', function(){ el.select(); });
   });
 
-  // highlight current sample in the strip
   if('IntersectionObserver' in window){
-    var io = new IntersectionObserver(function(entries){
-      entries.forEach(function(en){
-        if(en.isIntersecting){
-          var i = parseInt(en.target.getAttribute('data-i'),10);
+    var io = new IntersectionObserver(function(en){
+      en.forEach(function(x){
+        if(x.isIntersecting){
+          var i = parseInt(x.target.getAttribute('data-i'),10);
           cells.forEach(function(c,k){ c.classList.toggle('here', k===i); });
         }
       });
@@ -999,11 +1103,14 @@ textarea.res{font-family:"Noto Sans KR",sans-serif;font-size:13.5px;min-height:1
     sheets.forEach(function(s){ io.observe(s); });
   }
 
-  var shared = readHash();
-  if(shared && ans.some(function(v){return v>0;})){
-    var nt = document.getElementById('notice');
-    nt.textContent = '공유된 판정 결과를 불러왔습니다. 그대로 확인하거나, 선택을 바꾼 뒤 새 링크를 다시 공유할 수 있습니다.';
-    nt.classList.add('on');
+  var m = (location.hash||'').match(/a=([0-2]+)/);
+  if(m){
+    for(var i=0;i<N;i++) ans[i] = (i<m[1].length) ? (parseInt(m[1][i],10)||0) : 0;
+    if(ans.some(function(v){return v>0;})){
+      var nt = document.getElementById('notice');
+      nt.textContent = '공유된 판정 결과를 불러왔습니다. 그대로 확인하거나, 선택을 바꾼 뒤 새 링크를 다시 공유할 수 있습니다.';
+      nt.classList.add('on');
+    }
   }
   paint();
 })();
