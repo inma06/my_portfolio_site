@@ -236,6 +236,56 @@ export const projects: Project[] = [
     detail: sajuDetail,
   },
   {
+    name: "여행·SNS 데이터 수집 자동화",
+    slug: "travel-sns-data-pipeline",
+    period: "2025.05 — 2025.09 (5개월)",
+    role: "외부 개발 인력 · Python 데이터 수집·자동화 개발",
+    description:
+      "여행 명소와 SNS 이미지 데이터를 수집·정제하고, AI 번역 API로 한·영·중·일 다국어 데이터를 생성하는 Python 기반 데이터 파이프라인을 개발.",
+    badges: [{ kind: "backend", framework: "Python" }],
+    highlights: [
+      "여행 명소·SNS 이미지 데이터 크롤링 및 수집 로직 구현",
+      "cron 기반 정기 수집 자동화로 최신 데이터 갱신 체계 구축",
+      "수집 데이터 정제·표준화 및 품질 검증 처리",
+      "AI 번역 API 연동으로 한·영·중·일 다국어 데이터 생성 파이프라인 개발",
+    ],
+    tech: [
+      "Python",
+      "Web Crawling",
+      "Data Processing",
+      "cron",
+      "AI Translation API",
+      "Multilingual Data Pipeline",
+    ],
+    links: [],
+  },
+  {
+    name: "영어 교육 플랫폼 포겟미낫",
+    slug: "forget-me-not",
+    period: "2023.02 — 2025.04 (2년 3개월)",
+    role: "백엔드 중심 풀스택 개발 (Backend · Flutter)",
+    description:
+      "영어 학습 경험을 제공하는 플랫폼의 백엔드와 Flutter 프론트엔드 개발을 담당. NestJS 기반 API 서버와 모바일 앱을 중심으로 기능을 개발·운영.",
+    badges: [
+      { kind: "backend", framework: "NestJS" },
+      { kind: "app", framework: "Flutter" },
+      { kind: "flutter" },
+    ],
+    highlights: [
+      "NestJS 기반 영어 교육 플랫폼 API 서버 개발 및 운영",
+      "Flutter 기반 학습 서비스 프론트엔드 구현",
+      "백엔드·앱 간 API 연동과 서비스 기능 고도화 담당",
+    ],
+    tech: [
+      "NestJS",
+      "TypeScript",
+      "PostgreSQL",
+      "Flutter",
+      "Dart",
+    ],
+    links: [],
+  },
+  {
     name: "SNS 감사 일기",
     slug: "sns-gratitude",
     period: "2022.05 — 2023.01",
