@@ -260,7 +260,7 @@ export const projects: Project[] = [
     links: [],
   },
   {
-    name: "영어 교육 플랫폼 포겟미낫",
+    name: "영어 교육 플랫폼",
     slug: "forget-me-not",
     period: "2023.02 — 2025.04 (2년 3개월)",
     role: "백엔드 중심 풀스택 개발 (Backend · Flutter)",
