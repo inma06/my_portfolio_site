@@ -1,4 +1,4 @@
-const participationMessages = ["참여합니다.", "참여요", "참여!!!!!", "참여?", "참여할게요", "참여"];
+const participationMessages = ["도전합니다.", "도전이요", "도전!!!!!", "도전?", "도전할게요", "도전"];
 
 /** Generates a realistic copied-chat fixture with 100 unique valid entrants. */
 export function createTestChat() {
@@ -7,13 +7,13 @@ export function createTestChat() {
     const handle = `@test-user-${String(number).padStart(3, "0")}`;
     const message = participationMessages[(number - 1) % participationMessages.length];
     if (number === 25) {
-      lines.push(`${handle} ${message} @test-user-026 참여요`);
+      lines.push(`${handle} ${message} @test-user-026 도전이요`);
       number += 1;
       continue;
     }
     lines.push(handle, message);
     if (number % 20 === 0) lines.push("", "#3", "");
   }
-  lines.push("@test-user-005", "참여합니다.", "@OJTube", "​=== 이상 ===");
+  lines.push("@test-user-005", "도전합니다.", "@OJTube", "​=== 이상 ===");
   return lines.join("\n");
 }
