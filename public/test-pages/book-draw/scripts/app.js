@@ -20,6 +20,10 @@ const elements = {
 };
 const service = new BookDrawService({ participantParser: parseParticipants, bookRepository: new EasyspubBookRepository(), randomIndex: secureRandomIndex });
 const uiState = { currentView: "prepare", rotation: 0 };
+const spinSound = new Audio("./assets/audio/roulette_wheel_clicks_7s.wav");
+const winnerSound = new Audio("./assets/audio/winner-celebration.m4a");
+spinSound.preload = "auto";
+winnerSound.preload = "auto";
 
 function safeImageUrl(url) {
   try {
@@ -82,6 +86,10 @@ function renderCandidates() {
 }
 
 function setView(name) {
+  if (name !== "winner") {
+    winnerSound.pause();
+    winnerSound.currentTime = 0;
+  }
   uiState.currentView = name;
   Object.entries(elements.views).forEach(([key, view]) => view.classList.toggle("is-active", key === name));
   const activeIndex = ["prepare", "wheel", "winner"].indexOf(name);
@@ -148,6 +156,8 @@ function prepareWheel() {
 
 function spinWheel() {
   if (elements.spinButton.disabled || !service.candidates.length) return;
+  spinSound.currentTime = 0;
+  spinSound.play().catch(() => {});
   const winner = service.selectWinner();
   const sliceDegrees = 360 / service.candidates.length;
   const current = ((uiState.rotation % 360) + 360) % 360;
@@ -156,9 +166,9 @@ function spinWheel() {
   elements.spinButton.disabled = true;
   elements.spinButton.classList.add("is-spinning");
   elements.spinLabel.textContent = "추첨 중…";
-  elements.wheelCanvas.style.transition = "transform 4.8s cubic-bezier(.12,.68,.08,1)";
+  elements.wheelCanvas.style.transition = "transform 6.8s cubic-bezier(.12,.68,.08,1)";
   elements.wheelCanvas.style.transform = `rotate(${uiState.rotation}deg)`;
-  setTimeout(showWinner, 5000);
+  setTimeout(showWinner, 7000);
 }
 
 function showWinner() {
@@ -171,6 +181,8 @@ function showWinner() {
   elements.winnerMessageText.textContent = elements.winnerMessage.value.trim() || "당첨 안내를 확인해 주세요.";
   setCover($(".winner-book-cover"), service.book.image);
   setView("winner");
+  winnerSound.currentTime = 0;
+  winnerSound.play().catch(() => {});
 }
 
 function redraw() {
